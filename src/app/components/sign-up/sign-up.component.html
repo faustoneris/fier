@@ -1,0 +1,18 @@
+<div class="bg">
+  <div class="container">
+    <div class="form">
+      <h1>Fier</h1>
+      <form (ngSubmit)="onSubmit()" >
+        <input [(ngModel)]="user.name" name="name" type="text" placeholder="Nome">
+        <input [(ngModel)]="user.lastname" name="lastname" type="text" placeholder="Sobrenome">
+        <input [(ngModel)]="user.email" name="email" type="email" placeholder="E-mail">
+        <input [(ngModel)]="user.phoneNumber" name="phoneNumber" type="text" placeholder="Telefone">
+        <input type="password" placeholder="Senha">
+        <input type="password" placeholder="Confimar senha">
+        <p>Ao criar sua conta, você confirma que leu e concorda com os <span>termos de uso</span> da Fier</p>
+        <button type="submit">Criar conta</button>
+        <p>Já possui conta? Faça o <span>Login</span></p>
+      </form>
+    </div>
+  </div>
+</div>
