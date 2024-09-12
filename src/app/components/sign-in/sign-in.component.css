@@ -51,7 +51,7 @@ input::placeholder {
   color: var(--placeholder-color);
 }
 
-button {
+form > button {
   padding: 0.75rem;
   border: none;
   border-radius: 4rem;
@@ -62,6 +62,35 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+form > button:hover {
   background-color: var(--btn-hover-color);
+}
+
+.form-toggle {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+}
+
+.form-toggle button {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 1rem 2rem;
+  border-radius: 4rem;
+}
+
+.form-toggle button:hover {
+  text-decoration: underline;
+}
+
+.linkToRegister {
+  margin: 2rem 0 0 0;
+  font-size: 1.25rem;
+  text-align: center; 
+}
+
+.linkToRegister span a {
+  color: var(--btn-color);
+  cursor: pointer;
 }
