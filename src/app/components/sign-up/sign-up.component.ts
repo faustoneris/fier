@@ -1,26 +1,54 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { User } from '../../models/user.model';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterModule, CommonModule],
   templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css'
+  styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent {
-  user: User = {
+  isClient = true;  
+
+  user = {
     name: '',
     lastname: '',
-    phoneNumber: 999999999,
-    email: ''
-  }
+    phoneNumber: '',
+    email: '',
+    cpf: '',  
+    cnpj: '',
+    password: '',
+    confirmPassword: ''
+  };
 
   constructor(private userService: UserService) {}
 
   onSubmit() {
-    this.userService.createUser(this.user).subscribe()
+    let payload
+    
+    if (this.isClient) {
+      payload = {
+        name: this.user.name,
+        lastname: this.user.lastname,
+        phoneNumber: this.user.phoneNumber,
+        email: this.user.email,
+        cpf: this.user.cpf,
+        password: this.user.password  
+      }
+    } else {
+      payload = {
+        name: this.user.name,
+        phoneNumber: this.user.phoneNumber,
+        email: this.user.email,
+        cnpj: this.user.cnpj,
+        password: this.user.password  
+      }
+    }
+
+    this.userService.createUser(payload).subscribe();
   }
 }

@@ -1,9 +1,11 @@
 export interface User {
-  id?: string
   name: string
-  lastname: string
-  phoneNumber: number
+  lastname?: string
+  phoneNumber: string
   email: string
+  cpf?: string
+  cnpj?: string
+  password: string
 }
 
 export interface UserResponse {
