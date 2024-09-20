@@ -7,5 +7,5 @@ import { authorizationGuard } from './_guard/authorization.guard';
 export const routes: Routes = [
   { path: 'register', component: SignUpComponent },
   { path: 'login', component: SignInComponent },
-  { path: 'products', component: ProductsComponent, canActivate: [authorizationGuard] },
+  { path: 'products', component: ProductsComponent, /* canActivate: [authorizationGuard] */ },
 ];
