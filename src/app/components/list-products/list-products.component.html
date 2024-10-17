@@ -70,112 +70,26 @@
                   <p class="green"></p>
                   <p class="orange"></p>
                   <p class="purple"></p>
-                  <p class="red">
+                  <p class="red"></p>
               </div>
           </div>
       </div>
 
       <div class="list-products-container">
           <div class="products-total">
-              <p>Total de produtos: 10</p>
+              <p>Total de produtos: {{ products.length }}</p>
           </div>
 
           <div class="products-list">
-              <div class="wrap-product">
-                  <div class="product-img">
-                      <img src="assets/images/produto1.png" alt="Imagem de uma caixinha de bluetooth">
-                  </div>
-                  
-                  <div class="product-info">
-                      <p>Round Mini Portable Bluetooth Speaker</p>
-                      <span>$ 85.00</span>
-                      <span class="rating"><i class="ph-fill ph-star"></i> 4.1 (100)</span>
-                  </div>
-              </div>
-      
-              <div class="wrap-product">
-                  <div class="product-img">
-                      <img src="assets/images/produto2.png" alt="Imagem de uma caixinha de bluetooth">
-                  </div>
-      
-                  <div class="product-info">
-                      <p>OVE Light Space 5G, 128GB</p>
-                      <span>$ 85.00</span>
-                      <span class="rating"><i class="ph-fill ph-star"></i> 4.1 (100)</span>
-                  </div>
-              </div>
-      
-              <div class="wrap-product">
-                  <div class="product-img">
-                      <img src="assets/images/produto3.png" alt="Imagem de uma caixinha de bluetooth">
-                  </div>
-      
-                  <div class="product-info">
-                      <p>Round Mini Portable Bluetooth Speaker</p>
-                      <span>$ 85.00</span>
-                      <span class="rating"><i class="ph-fill ph-star"></i> 4.1 (100)</span>
-                  </div>
-              </div>
-      
-              <div class="wrap-product">
-                  <div class="product-img">
-                      <img src="assets/images/produto4.png" alt="Imagem de uma caixinha de bluetooth">
-                  </div>
-                  
-                  <div class="product-info">
-                      <p>Round Mini Portable Bluetooth Speaker</p>
-                      <span>$ 85.00</span>
-                      <span class="rating"><i class="ph-fill ph-star"></i> 4.1 (100)</span>
-                  </div>
-              </div>
-      
-              <div class="wrap-product">
-                  <div class="product-img">
-                      <img src="assets/images/produto1.png" alt="Imagem de uma caixinha de bluetooth">
-                  </div>
-                  
-                  <div class="product-info">
-                      <p>Round Mini Portable Bluetooth Speaker</p>
-                      <span>$ 85.00</span>
-                      <span class="rating"><i class="ph-fill ph-star"></i> 4.1 (100)</span>
-                  </div>
-              </div>
-      
-              <div class="wrap-product">
-                  <div class="product-img">
-                      <img src="assets/images/produto2.png" alt="Imagem de uma caixinha de bluetooth">
-                  </div>
-      
-                  <div class="product-info">
-                      <p>OVE Light Space 5G, 128GB</p>
-                      <span>$ 85.00</span>
-                      <span class="rating"><i class="ph-fill ph-star"></i> 4.1 (100)</span>
-                  </div>
-              </div>
-      
-              <div class="wrap-product">
-                  <div class="product-img">
-                      <img src="assets/images/produto3.png" alt="Imagem de uma caixinha de bluetooth">
-                  </div>
-      
-                  <div class="product-info">
-                      <p>Round Mini Portable Bluetooth Speaker</p>
-                      <span>$ 85.00</span>
-                      <span class="rating"><i class="ph-fill ph-star"></i> 4.1 (100)</span>
-                  </div>
-              </div>
-      
-              <div class="wrap-product">
-                  <div class="product-img">
-                      <img src="assets/images/produto4.png" alt="Imagem de uma caixinha de bluetooth">
-                  </div>
-                  
-                  <div class="product-info">
-                      <p>Round Mini Portable Bluetooth Speaker</p>
-                      <span>$ 85.00</span>
-                      <span class="rating"><i class="ph-fill ph-star"></i> 4.1 (100)</span>
-                  </div>
-              </div>
+            <app-card-product
+                *ngFor="let product of products"
+                [image]="product.image"
+                [description]="product.description"
+                [name]="product.name"
+                [price]="product.price"
+                [totalRating]="product.totalRating"
+                [avgRating]="product.avgRating"
+            ></app-card-product>
           </div>
       </div>
   </div>

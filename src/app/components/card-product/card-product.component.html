@@ -1,0 +1,11 @@
+<div class="wrap-product">
+    <div class="product-img">
+        <img src="{{ image }}" alt="{{ description }}">
+    </div>
+    
+    <div class="product-info">
+        <p>{{ name }}</p>
+        <span>{{ price | currency:'BRL' }}</span>
+        <span class="rating"><i class="ph-fill ph-star"></i> {{ avgRating }} ({{ totalRating }})</span>
+    </div>
+</div>
