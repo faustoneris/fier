@@ -8,15 +8,15 @@ import { User, UserResponse } from '../models/user.model';
 })
 export class UserService {
   private url = 'http://localhost:3000/users/authentication/create'
-
   private users: User[] = []
+  private currentUser: { cpf?: string; cnpj?: string; password: string } | null = null
 
   constructor(private http: HttpClient) { }
 
   createUser(user: any): Observable<any> {
-    this.users.push(user) 
+    this.users.push(user)
     console.log(this.users)
-    return of({ message: 'Usuario criado!'})
+    return of({ message: 'Usuário criado!' })
   }
 
   authenticate(credentials: { cpf?: string; cnpj?: string; password: string }): Observable<{ jwt: string }> {
@@ -26,13 +26,14 @@ export class UserService {
     );
 
     if (user && user.password === credentials.password) {
+      this.currentUser = user
       return of({ jwt: 'JWT_TESTE' })
     }
 
     throw new Error('Credenciais inválidas')
   }
 
-/*   createUser(user: User): Observable<UserResponse> {
-    return this.http.post<UserResponse>(this.url, user)
-  } */
+  getCredentials(): { cpf?: string; cnpj?: string; password: string } | null {
+    return this.currentUser
+  }
 }

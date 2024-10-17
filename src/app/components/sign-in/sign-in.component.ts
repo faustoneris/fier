@@ -3,7 +3,8 @@ import { LoginService } from '../../services/login.service';
 import { Credentials } from '../../models/login.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -22,25 +23,32 @@ export class SignInComponent {
     isClient: this.isClient,
   }
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   onLogin() {
-    let payload: Credentials
+    let payload: Credentials;
 
     if (this.isClient) {
       payload = {
         isClient: true,
         cpf: this.user.cpf,
         password: this.user.password
-      }
-    } else { 
+      };
+    } else {
       payload = {
         isClient: false,
         cnpj: this.user.cnpj,
         password: this.user.password
-      }
+      };
     }
 
-    this.loginService.login(payload)
+    this.loginService.login(payload).subscribe({
+      next: () => {
+        this.router.navigate(['/list-products'])
+      },
+      error: (err) => {
+        console.error('Login falhou:', err.message)
+      }
+    });
   }
 }
