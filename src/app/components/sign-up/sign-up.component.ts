@@ -28,6 +28,7 @@ export class SignUpComponent {
   constructor(private userService: UserService) {}
 
   onSubmit() {
+    console.log('ONSUBMIT!')
     let payload
     
     if (this.isClient) {
