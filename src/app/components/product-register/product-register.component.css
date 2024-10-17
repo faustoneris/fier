@@ -63,35 +63,6 @@
                 width: 100%;
                 gap: .5rem;
             }
-
-            & .btn-input-file{
-                position: relative;
-                padding: 1rem 1.5rem;
-                font-size: 1.5rem;
-                line-height: 1.5rem;
-                border-radius: .3rem;
-                color: #FFF;
-                background-color: #1D74D7;
-                border: 0;
-                transition: 0.2s;
-                overflow: hidden;
-                width: 90%;
-                
-                & input[type="file"]{
-                    cursor: pointer;
-                    position: absolute;
-                    left: 0%;
-                    top: 0%;
-                    transform: scale(3);
-                    opacity: 0;
-                }
-                
-                &:hover{
-                    background-color: #FFF;
-                    border: 1px solid #1D74D7;
-                    color: #1D74D7;
-                }
-            }
         }
 
         & .wrap-btns-actions{

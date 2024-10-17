@@ -1,72 +1,64 @@
 <app-header></app-header>
 
-<div class="product-register-container">
-    <h1>Cadastro de Produto</h1>
 
-    <div class="wrap-inputs">
-        <label class="box box-name-product">
-            <p class="title-item">Nome do Produto</p>
-            <input type="text" id="productName" name="productName" class="form-field">
-        </label>
-
-        <label class="box box-price-product">
-            <p class="title-item">Preço</p>
-            <input type="text" id="productPrice" name="productPrice" class="form-field">
-        </label>
-
-        <label class="box box-category-product">
-            <p class="title-item">Categoria</p>
-            <select id="productCategory" name="productCategory" class="form-field">
-                <option value="">Selecione uma opção...</option>
-                <option value="">Mobile & Wearable Tech</option>
-                <option value="">Drones & Cameras</option>
-                <option value="">Headphones & Speakers</option>
-                <option value="">Computers Tablets</option>
-                <option value="">TV & Home Cinema</option>
-            </select>
-        </label>
-
-        <label class="box box-description-product">
-            <p class="title-item">Descrição</p>
-            <textarea id="productDescription" name="productDescription" class="form-field textarea-input"></textarea>
-        </label>
-
-        <label class="box box-specification-product">
-            <p class="title-item">Especificações</p>
-            <textarea id="productSpecification" name="productSpecification" class="form-field textarea-input"></textarea>
-        </label>
-
-        <label class="box box-documents-product">
-            <div class="wrap-file">
-                <p class="title-item">Imagens do Produto</p>
-                
-                <div class="upload">
-                    <button type="button" class="btn-input-file">
-                        <i class="ph ph-upload"></i> Anexar arquivos
-                        <input type="file" id="productDocument" name="productDocument">
-                    </button>
-                </div>
-            </div>
-
-            <div class="wrap-file">
-                <p class="title-item">Documento do Produto</p>
-                
-                <div class="upload">
-                    <button type="button" class="btn-input-file">
-                        <i class="ph ph-upload"></i> Anexar arquivos
-                        <input type="file" id="productDocument" name="productDocument">
-                    </button>
-                </div>
-            </div>
-        </label>
+<form [formGroup]="formProductRegister" (ngSubmit)="onSubmit()">
+    <div class="product-register-container">
+        <h1>Cadastro de Produto</h1>
         
-        <div class="wrap-btns-actions">
-            <button type="submit" class="btn-action clear">Limpar <i class="ph-thin ph-x-circle"></i></button>
-            <button type="button" class="btn-action save">Salvar <i class="ph-thin ph-check-circle"></i></button>
+        <div class="wrap-inputs">
+            <label class="box box-name-product">
+                <p class="title-item">Nome do Produto</p>
+                <input type="text" id="productName" name="productName" class="form-field" formControlName="productName">
+            </label>
+            
+            <label class="box box-price-product">
+                <p class="title-item">Preço</p>
+                <input type="text" id="productPrice" name="productPrice" class="form-field" formControlName="productPrice">
+            </label>
+            
+            <label class="box box-category-product">
+                <p class="title-item">Categoria</p>
+                <select id="productCategory" name="productCategory" class="form-field" formControlName="productCategory">
+                    <option value="">Selecione uma opção...</option>
+                    <option value="">Mobile & Wearable Tech</option>
+                    <option value="">Drones & Cameras</option>
+                    <option value="">Headphones & Speakers</option>
+                    <option value="">Computers Tablets</option>
+                    <option value="">TV & Home Cinema</option>
+                </select>
+            </label>
+
+            <label class="box box-description-product">
+                <p class="title-item">Descrição</p>
+                <textarea id="productDescription" name="productDescription" class="form-field textarea-input" formControlName="productDescription"></textarea>
+            </label>
+            
+            <label class="box box-specification-product">
+                <p class="title-item">Especificações</p>
+                <textarea id="productSpecification" name="productSpecification" class="form-field textarea-input" formControlName="productSpecification"></textarea>
+            </label>
+            
+            <label class="box box-documents-product">
+                <div class="wrap-file">
+                    <p class="title-item">Imagens do Produto</p>
+                    <input type="file" id="productImage" name="productImage" formControlName="productImage" multiple>
+                </div>
+            
+                <div class="wrap-file">
+                    <p class="title-item">Documento do Produto</p>
+                    <input type="file" id="productDocument" name="productDocument" formControlName="productDocument" multiple>
+                </div>
+            </label>
+        
+            <div class="wrap-btns-actions">
+                <button type="button" class="btn-action clear">Limpar <i class="ph-thin ph-x-circle"></i></button>
+                <button type="submit" class="btn-action save">Salvar <i class="ph-thin ph-check-circle"></i></button>
+            </div>
         </div>
     </div>
+</form>
 
-</div>
-  
+
+    
 
 <app-footer></app-footer>
