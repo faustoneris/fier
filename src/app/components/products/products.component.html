@@ -37,29 +37,31 @@
                 <span class="min-price">Lance mínimo R$ 280,00</span>
             </div>
 
-            <div class="wrap-actions-bid">
-                <div class="product-inputs">
-                    <label class="wrap-input">
-                        <p class="title-item">Valor do Lance:</p>
-                        <input type="text" id="txtBidValue" name="txtBidValue" class="form-field">
-                    </label>
+            <form (ngSubmit)="onBid()">
+                <div class="wrap-actions-bid" [class.hide]="bidMade">
+                    <div class="product-inputs">
+                        <label class="wrap-input">
+                            <p class="title-item">Valor do Lance:</p>
+                            <input type="text" id="txtBidValue" name="txtBidValue" class="form-field" [(ngModel)]="bidInfos.bidAmount">
+                        </label>
 
-                    <label class="wrap-input">
-                        <p class="title-item">Qtd:</p>
-                        <input type="number" id="txtQtdItem" name="txtQtdItem" class="form-field">
-                    </label>
+                        <label class="wrap-input">
+                            <p class="title-item">Qtd:</p>
+                            <input type="number" id="txtQtdItem" name="txtQtdItem" class="form-field" [(ngModel)]="bidInfos.qtdProduct">
+                        </label>
+                    </div>
+
+                    <div class="product-buttons">
+                        <button class="btn btn-primary btn-large" (click)="bidMade = true">Dar Lance <i class="ph ph-gavel"></i></button>
+                    </div>
                 </div>
 
-                <div class="product-buttons">
-                    <button class="btn btn-primary btn-large">Dar Lance <i class="ph ph-gavel"></i></button>
+                <div class="bid-sent" [class.hide]="!bidMade">
+                    <p class="p-bid-sent">Seu lance para esse produto já foi realizado e registrado com sucesso.</p>
+                    <p class="p-bid-sent">Por favor, aguarde enquanto o fornecedor analisa a sua oferta.</p>
+                    <p class="p-bid-sent">Você deverá receber uma resposta em até 24h.</p>
                 </div>
-            </div>
-
-            <div class="bid-sent hide">
-                <p class="p-bid-sent">Seu lance para esse produto já foi realizado e registrado com sucesso.</p>
-                <p class="p-bid-sent">Por favor, aguarde enquanto o fornecedor analisa a sua oferta.</p>
-                <p class="p-bid-sent">Você deverá receber uma resposta em até 24h.</p>
-            </div>
+            </form>
         </div>
     </div>
 
