@@ -22,5 +22,6 @@ export class ProductsComponent {
 
   onBid(){
     console.log("Bid button clicked");
+    this.bidMade = true;
   }
 }
