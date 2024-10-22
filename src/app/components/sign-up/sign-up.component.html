@@ -6,21 +6,42 @@
         <button type="button" (click)="isClient = true" [class.active]="isClient">Cliente</button>
         <button type="button" (click)="isClient = false" [class.active]="!isClient">Fornecedor</button>
       </div>
-      <form (ngSubmit)="onSubmit()">
-        <input [(ngModel)]="user.name" name="name" type="text" placeholder="Nome">
-        <input *ngIf="isClient" [(ngModel)]="user.lastname" name="lastname" type="text" placeholder="Sobrenome">
-        <input [(ngModel)]="user.email" name="email" type="email" placeholder="E-mail">
-        <input [(ngModel)]="user.phoneNumber" name="phoneNumber" type="text" placeholder="Telefone">
+      <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" #formDir="ngForm">
+        <input name="name" type="text" placeholder="Nome" required formControlName="name">
+        <div *ngIf="name.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="name.errors?.['required']" >Esse campo é obrigatório!</p>
+        </div>
+        <input name="email" type="email" placeholder="E-mail" required formControlName="email">
+        <div *ngIf="email.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="email.errors?.['required']" >Esse campo é obrigatório!</p>
+          <p *ngIf="email.errors?.['email']" >Digite um email válido!</p>
+        </div>
+        <input name="phoneNumber" type="number" placeholder="Telefone" required formControlName="phoneNumber">
+        <div *ngIf="phoneNumber.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="phoneNumber.errors?.['required']" >Esse campo é obrigatório!</p>
+        </div>
         
         <ng-container *ngIf="isClient; else supplierFields">
-          <input [(ngModel)]="user.cpf" name="cpf" type="text" placeholder="CPF">
+          <input name="cpf" type="text" placeholder="CPF" required formControlName="cpf">
+          <div *ngIf="cpf.invalid && formDir.submitted" class="validation-error">
+            <p *ngIf="cpf.errors?.['required']" >Esse campo é obrigatório!</p>
+          </div>
         </ng-container>
         <ng-template #supplierFields>
-          <input [(ngModel)]="user.cnpj" name="cnpj" type="text" placeholder="CNPJ">
+          <input name="cnpj" type="text" placeholder="CNPJ" required formControlName="cnpj">
+          <div *ngIf="cnpj.invalid && formDir.submitted" class="validation-error">
+            <p *ngIf="cnpj.errors?.['required']" >Esse campo é obrigatório!</p>
+          </div>
         </ng-template>
         
-        <input [(ngModel)]="user.password" name="name" type="password" placeholder="Senha">
-        <input [(ngModel)]="user.confirmPassword" name="name" type="password" placeholder="Confirmar senha">
+        <input name="password" type="password" placeholder="Senha" required formControlName="password">
+        <div *ngIf="password.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="password.errors?.['required']" >Esse campo é obrigatório!</p>
+        </div>
+        <input name="confirmPassword" type="password" placeholder="Confirmar senha" required formControlName="confirmPassword">
+        <div *ngIf="confirmPassword.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="confirmPassword.errors?.['required']" >Esse campo é obrigatório!</p>
+        </div>
         <p>Ao criar sua conta, você confirma que leu e concorda com os <span>termos de uso</span> da Fier</p>
         <button type="submit">Criar conta</button>
         <p>Já possui conta? Faça o <span><a [routerLink]="['/login']">Login</a></span></p>

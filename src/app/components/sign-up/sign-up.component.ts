@@ -1,54 +1,96 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [FormsModule, RouterModule, CommonModule],
+  imports: [FormsModule, RouterModule, CommonModule, ReactiveFormsModule],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent {
-  isClient = true;  
+  isClient = true
+  
+  registerForm!: FormGroup
 
-  user = {
-    name: '',
-    lastname: '',
-    phoneNumber: '',
-    email: '',
-    cpf: '',  
-    cnpj: '',
-    password: '',
-    confirmPassword: ''
-  };
+  constructor(private userService: UserService, private fb: FormBuilder) {}
 
-  constructor(private userService: UserService) {}
+  ngOnInit(): void {
+    this.initForm()
+  }
 
-  onSubmit() {
-    let payload
-    
+  initForm() {
+    this.registerForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+      cpf: ['', this.isClient ? Validators.required : []],
+      cnpj: ['', this.isClient ? Validators.required : []],
+    })
+
+    this.updateFormControls()
+  }
+
+  setClient(value: boolean) {
+    this.isClient = value
+    this.updateFormControls()
+  }
+
+  updateFormControls() {
     if (this.isClient) {
-      payload = {
-        name: this.user.name,
-        lastname: this.user.lastname,
-        phoneNumber: this.user.phoneNumber,
-        email: this.user.email,
-        cpf: this.user.cpf,
-        password: this.user.password  
-      }
+      this.registerForm.get('cpf')?.setValidators([Validators.required])
+      this.registerForm.get('cnpj')?.clearValidators()
+      this.registerForm.get('cnpj')?.setValue('')
     } else {
-      payload = {
-        name: this.user.name,
-        phoneNumber: this.user.phoneNumber,
-        email: this.user.email,
-        cnpj: this.user.cnpj,
-        password: this.user.password  
-      }
+      this.registerForm.get('cnpj')?.setValidators([Validators.required])
+      this.registerForm.get('cpf')?.clearValidators()
+      this.registerForm.get('cpf')?.setValue('')
     }
 
-    this.userService.createUser(payload).subscribe();
+    this.registerForm.get('cpf')?.updateValueAndValidity();
+    this.registerForm.get('cnpj')?.updateValueAndValidity();
+  }
+
+  get name() {
+    return this.registerForm.get('name')!
+  }
+
+  get email() {
+    return this.registerForm.get('email')!
+  }
+
+  get cpf() {
+    return this.registerForm.get('cpf')!
+  }
+
+  get cnpj() {
+    return this.registerForm.get('cnpj')!
+  }
+
+  get phoneNumber() {
+    return this.registerForm.get('phoneNumber')!
+  }
+
+  get password() {
+    return this.registerForm.get('password')!
+  }
+
+  get confirmPassword() {
+    return this.registerForm.get('confirmPassword')!
+  }
+
+  onSubmit() {
+    if (this.registerForm.invalid) {
+      return
+    }
+
+    console.log('Enviou formulario!')
+
+    //this.userService.createUser(payload).subscribe();
   }
 }
