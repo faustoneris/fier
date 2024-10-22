@@ -1,46 +1,76 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../services/login.service';
-import { Credentials } from '../../models/login.model';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
 export class SignInComponent {
   isClient = true
 
-  user = {
-    cnpj: '',
-    cpf: '',
-    password: '',
-    isClient: this.isClient,
+  loginForm!: FormGroup
+
+  constructor(private loginService: LoginService, private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.initForm()
   }
 
-  constructor(private loginService: LoginService) {}
+  initForm() {
+    this.loginForm = this.fb.group({
+      password: [null, Validators.required],
+      cpf: ['', this.isClient ? Validators.required : []],
+      cnpj: ['', this.isClient ? Validators.required : []],
+    })
 
-  onLogin() {
-    let payload: Credentials
+    this.updateFormControls()
+  }
 
+  setClient(value: boolean) {
+    this.isClient = value
+    this.updateFormControls()
+  }
+
+  updateFormControls() {
     if (this.isClient) {
-      payload = {
-        isClient: true,
-        cpf: this.user.cpf,
-        password: this.user.password
-      }
-    } else { 
-      payload = {
-        isClient: false,
-        cnpj: this.user.cnpj,
-        password: this.user.password
-      }
+      this.loginForm.get('cpf')?.setValidators([Validators.required])
+      this.loginForm.get('cnpj')?.clearValidators()
+      this.loginForm.get('cnpj')?.setValue('')
+    } else {
+      this.loginForm.get('cnpj')?.setValidators([Validators.required])
+      this.loginForm.get('cpf')?.clearValidators()
+      this.loginForm.get('cpf')?.setValue('')
     }
 
-    this.loginService.login(payload)
+    this.loginForm.get('cpf')?.updateValueAndValidity();
+    this.loginForm.get('cnpj')?.updateValueAndValidity();
+  }
+
+  get cpf() {
+    return this.loginForm.get('cpf')!
+  }
+
+  get cnpj() {
+    return this.loginForm.get('cnpj')!
+  }
+
+  get password() {
+    return this.loginForm.get('password')!
+  }
+
+  onSubmit() {
+    if (this.loginForm.invalid) {
+      return
+    }
+
+    console.log('Enviou formulario!')
+
+    //this.loginService.login(payload)
   }
 }

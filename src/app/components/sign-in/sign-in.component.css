@@ -94,3 +94,8 @@ form > button:hover {
   color: var(--btn-color);
   cursor: pointer;
 }
+
+.validation-error {
+  color: red;
+  margin-bottom: .5rem;
+}
