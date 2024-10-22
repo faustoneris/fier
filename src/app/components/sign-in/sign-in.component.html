@@ -10,7 +10,7 @@
         <input
           *ngIf="isClient"
           name="cpf"
-          type="text"
+          type="number"
           placeholder="CPF"
           autocomplete="off"
           required
@@ -22,7 +22,7 @@
         <input
           *ngIf="!isClient"
           name="cnpj"
-          type="text"
+          type="number"
           placeholder="CNPJ"
           autocomplete="off"
           required

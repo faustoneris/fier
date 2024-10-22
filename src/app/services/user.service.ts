@@ -7,7 +7,7 @@ import { User, UserResponse } from '../models/user.model';
   providedIn: 'root'
 })
 export class UserService {
-  private url = 'http://localhost:3000/users/authentication/create'
+  private url = 'http://localhost:3000/users' //Mudar a URL p BFF
 
   constructor(private http: HttpClient) { }
 

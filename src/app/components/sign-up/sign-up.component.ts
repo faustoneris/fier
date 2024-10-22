@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -16,7 +16,7 @@ export class SignUpComponent {
   
   registerForm!: FormGroup
 
-  constructor(private userService: UserService, private fb: FormBuilder) {}
+  constructor(private userService: UserService, private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.initForm()
@@ -89,8 +89,36 @@ export class SignUpComponent {
       return
     }
 
-    console.log('Enviou formulario!')
+    let payload: any = {
+      name: this.registerForm.get('name')?.value,
+      email: this.registerForm.get('email')?.value,
+      phoneNumber: this.registerForm.get('phoneNumber')?.value,
+      password: this.registerForm.get('password')?.value,
+      loginType: this.isClient ? 'CUSTOMER' : 'SUPPLIER'
+    }
 
-    //this.userService.createUser(payload).subscribe();
+    if (this.isClient) {
+      payload.document = this.registerForm.get('cpf')?.value;
+    }
+
+    if (!this.isClient) {
+      payload.document = this.registerForm.get('cnpj')?.value;
+    }
+
+    this.userService.createUser(payload).subscribe({
+      next: (res) => {
+        this.router.navigate(['/login'])
+      },
+      error: (err) => {
+        console.error('Erro ao criar o usuário: ', err)
+
+        if (err.status === 502) {
+          alert('Usuário já cadastrado!')
+        } else {
+          alert('Erro. Tente novamente!')
+        }
+
+      }
+    })
   }
 }

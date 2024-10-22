@@ -69,6 +69,20 @@ export class SignInComponent {
       return
     }
 
+    let payload: any = {
+      password: this.loginForm.get('password')?.value,
+      type: this.isClient ? 'CUSTOMER' : 'SUPPLIER'
+    }
+
+    if (this.isClient) {
+      payload.document = this.loginForm.get('cpf')?.value;
+    }
+
+    if (!this.isClient) {
+      payload.document = this.loginForm.get('cnpj')?.value;
+    }
+    
+    console.log('Payload: ', payload)
     console.log('Enviou formulario!')
 
     //this.loginService.login(payload)
