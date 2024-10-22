@@ -7,6 +7,7 @@ import { authorizationGuard } from './_guard/authorization.guard';
 import { ListProductsComponent } from './components/list-products/list-products.component';
 import { ProductRegisterComponent } from './components/product-register/product-register.component';
 import { createProductGuard } from './_guard/create-product.guard';
+import { ViewProductsSupplierComponent } from './components/view-products-supplier/view-products-supplier.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, /* canActivate: [authorizationGuard] */ },
@@ -14,5 +15,6 @@ export const routes: Routes = [
   { path: 'login', component: SignInComponent },
   { path: 'products', component: ProductsComponent, /* canActivate: [authorizationGuard] */ },
   { path: 'list-products', component: ListProductsComponent, /* canActivate: [authorizationGuard] */ },
-  { path: 'product-register', component: ProductRegisterComponent, canActivate: [createProductGuard] }
+  { path: 'product-register', component: ProductRegisterComponent, canActivate: [createProductGuard] },
+  { path: 'view-products-supplier', component: ViewProductsSupplierComponent, /* canActivate: [authorizationGuard] */ }
 ];
