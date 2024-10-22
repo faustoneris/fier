@@ -30,7 +30,11 @@ export class ListProductsComponent {
 
   clearSearchProducts(): void {
     this.customersProductService.getAllCustomersProducts().subscribe(data => {
-      this.products = data
+      if (data && data.length > 0) {
+        this.products = data
+      } else {
+        this.products = []
+      }
     })
   }
 
@@ -48,12 +52,24 @@ export class ListProductsComponent {
       })
 
       forkJoin(productRequests).subscribe(results => {
-        this.allProducts = results.flat()
+        const allProducts = results.flat()
+        
+        if (allProducts.length > 0) {
+          this.allProducts = allProducts
+        } else {
+          this.allProducts = []
+        }
+
         this.filterProducts()
       })
     } else {
       this.customersProductService.getAllCustomersProducts().subscribe(data => {
-        this.allProducts = data
+        if (data && data.length > 0) {
+          this.allProducts = data
+        } else {
+          this.allProducts = []
+        }
+
         this.filterProducts()
       });
     }
