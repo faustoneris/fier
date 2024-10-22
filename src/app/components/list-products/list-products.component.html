@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header (searchChanged)="onSearchChange($event)" ></app-header>
  <section class="search-products-container">
   <h2>All products</h2>
   
@@ -20,43 +20,33 @@
 
               <div class="list-items">
                   <label>
-                      <input type="checkbox">
+                      <input type="checkbox" (change)="onCheckboxChange($event, 'Computers Tablets')" >
                       <span>Computers</span>
                   </label>
 
                   <label>
-                      <input type="checkbox">
+                      <input type="checkbox" (change)="onCheckboxChange($event, 'Drones & Cameras')">
                       <span>Drones & Cameras</span>
                   </label>
 
                   <label>
-                      <input type="checkbox">
+                      <input type="checkbox" (change)="onCheckboxChange($event, 'Headphones & Speakers')">
                       <span>Headphones and Speakers</span>
                   </label>
 
                   <label>
-                      <input type="checkbox">
+                      <input type="checkbox" (change)="onCheckboxChange($event, 'Mobile & Wearable Tech')">
                       <span>Mobile and Wearable Tech</span>
                   </label>
 
                   <label>
-                      <input type="checkbox">
-                      <span>New Products</span>
+                      <input type="checkbox" (change)="onCheckboxChange($event, 'TV & Home Cinema')">
+                      <span>TV and Home Cinema</span>
                   </label>
 
                   <label>
-                      <input type="checkbox">
-                      <span>Tablets</span>
-                  </label>
-
-                  <label>
-                      <input type="checkbox">
-                      <span>Top Sellers</span>
-                  </label>
-
-                  <label>
-                      <input type="checkbox">
-                      <span>TV & Home Cinema</span>
+                      <input type="checkbox" (change)="onCheckboxChange($event, 'Smartphones')">
+                      <span>Smartphones</span>
                   </label>
               </div>
           </div>
@@ -78,6 +68,7 @@
       <div class="list-products-container">
           <div class="products-total">
               <p>Total de produtos: {{ products.length }}</p>
+              <button (click)="clearSearchProducts()">Limpar categorias</button>
           </div>
 
           <div class="products-list">

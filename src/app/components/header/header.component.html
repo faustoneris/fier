@@ -10,16 +10,16 @@
       </label>
 
       <ul class="list-elements show">
-          <li><a href="#">Mobile & Wearable Tech</a></li>
-          <li><a href="#">Drones & Cameras</a></li>
-          <li><a href="#">Headphones & Speakers</a></li>
-          <li><a href="#">Computers</a></li>
-          <li><a href="#">Tablets</a></li>
-          <li><a href="#">TV & Home Cinema</a></li>
+          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >Mobile & Wearable Tech</a></li>
+          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >Drones & Cameras</a></li>
+          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >Headphones & Speakers</a></li>
+          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >Computers</a></li>
+          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >Tablets</a></li>
+          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >TV & Home Cinema</a></li>
       </ul>
 
       <div class="search-bar">
-          <input type="text" placeholder="Search..." class="txt-search">
+          <input type="text" placeholder="Search..." class="txt-search" (input)="onSearchChange($event)">
       </div>
 
       <div class="users-info">
