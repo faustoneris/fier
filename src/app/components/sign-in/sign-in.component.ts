@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { LoginService } from '../../services/login.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,7 +16,7 @@ export class SignInComponent {
 
   loginForm!: FormGroup
 
-  constructor(private loginService: LoginService, private fb: FormBuilder) {}
+  constructor(private authService: AuthService, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.initForm()
@@ -71,7 +71,6 @@ export class SignInComponent {
 
     let payload: any = {
       password: this.loginForm.get('password')?.value,
-      type: this.isClient ? 'CUSTOMER' : 'SUPPLIER'
     }
 
     if (this.isClient) {
@@ -85,6 +84,6 @@ export class SignInComponent {
     console.log('Payload: ', payload)
     console.log('Enviou formulario!')
 
-    //this.loginService.login(payload)
+    this.authService.signIn(payload)
   }
 }

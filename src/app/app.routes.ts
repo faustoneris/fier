@@ -8,10 +8,10 @@ import { ListProductsComponent } from './components/list-products/list-products.
 import { ProductRegisterComponent } from './components/product-register/product-register.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent, /* canActivate: [authorizationGuard] */ },
+  { path: '', component: HomeComponent, canActivate: [authorizationGuard] },
   { path: 'register', component: SignUpComponent },
   { path: 'login', component: SignInComponent },
-  { path: 'products', component: ProductsComponent, /* canActivate: [authorizationGuard] */ },
-  { path: 'list-products', component: ListProductsComponent, /* canActivate: [authorizationGuard] */ },
-  { path: 'product-register', component: ProductRegisterComponent, /* canActivate: [authorizationGuard] */ }
+  { path: 'products', component: ProductsComponent, canActivate: [authorizationGuard] },
+  { path: 'list-products', component: ListProductsComponent, canActivate: [authorizationGuard] },
+  { path: 'product-register', component: ProductRegisterComponent, canActivate: [authorizationGuard] }
 ];

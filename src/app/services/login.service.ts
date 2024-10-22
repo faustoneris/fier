@@ -13,7 +13,7 @@ export class LoginService {
 
   login(credentials: Credentials) {
     return this.http.post<LoginResponse>(this.url, credentials).subscribe(response => {
-      this.authService.setToken(response.jwt)
+      /* this.authService.setToken(response.jwt) */
     })
   }
 }
