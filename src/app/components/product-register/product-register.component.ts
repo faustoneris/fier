@@ -21,11 +21,12 @@ export class ProductRegisterComponent {
   ) {
     this.productForm = this.fb.group({
       productName: ['', Validators.required],
-      productPrice: ['', Validators.required],
+      productPriceMin: ['', Validators.required],
+      productPriceMax: ['', Validators.required],
       productCategory: ['', Validators.required],
       productDescription: [''],
       productSpecification: [''],
-      productDocument: [null]
+      productImages: [null]
     })
   }
 
@@ -36,7 +37,8 @@ export class ProductRegisterComponent {
       //payload teste (fix)
       const payload = {
         name: formData.productName, 
-        price: formData.productPrice, 
+        priceMin: formData.productPriceMin, 
+        priceMax: formData.productPriceMax, 
         image: "~/images/",
         category: formData.productCategory,
         feedbacks: [],
@@ -68,7 +70,7 @@ export class ProductRegisterComponent {
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
-      this.productForm.patchValue({ productDocument: file });
+      this.productForm.patchValue({ productImages: file });
     }
   }
 }

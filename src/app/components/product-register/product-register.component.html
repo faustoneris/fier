@@ -10,9 +10,14 @@
         <input type="text" id="productName" formControlName="productName" class="form-field">
       </label>
 
-      <label class="box box-price-product">
-        <p class="title-item">Preço</p>
-        <input type="text" id="productPrice" formControlName="productPrice" class="form-field">
+      <label class="box box-price-min-product">
+        <p class="title-item">Preço Mínimo</p>
+        <input type="text" id="productPriceMin" formControlName="productPriceMin" class="form-field">
+      </label>
+
+      <label class="box box-price-max-product">
+        <p class="title-item">Preço Máximo</p>
+        <input type="text" id="productPriceMax" formControlName="productPriceMax" class="form-field">
       </label>
 
       <label class="box box-category-product">
@@ -38,15 +43,8 @@
       </label>
 
       <label class="box box-documents-product">
-        <div class="wrap-file">
-          <p class="title-item">Imagens do Produto</p>
-          <div class="upload">
-            <button type="button" class="btn-input-file">
-              <i class="ph ph-upload"></i> Anexar arquivos
-              <input type="file" id="productDocument" (change)="onFileSelected($event)">
-            </button>
-          </div>
-        </div>
+        <p class="title-item">Imagens do Produto</p>
+        <input type="file" id="productImages" (change)="onFileSelected($event)" multiple>
       </label>
       
       <div class="wrap-btns-actions">

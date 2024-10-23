@@ -8,19 +8,20 @@
     gap: 2rem;
 
     & h1{
-        font-size: 2.5rem;
+        font-size: 3rem;
         border-bottom: 1px solid #DDD;
         color: #818181;
         font-weight: 500;
+        padding-bottom: 1rem;
     }
     
     & .wrap-inputs{
         display: grid;
         grid-template: 
-        "input1 input2 input3"
-        "input4 input4 input4"
-        "input5 input5 input5"
-        "file1 file action";
+        "input1 input2 input3 input4"
+        "input5 input5 input5 input5"
+        "input6 input6 input6 input6"
+        "file1 file file action";
         gap: 2rem;
 
         & .box{
@@ -28,7 +29,7 @@
             gap: .5rem;
 
             & p.title-item{
-                font-size: 1.5rem;
+                font-size: 1.8rem;
                 color: #818181;
             }
     
@@ -41,58 +42,22 @@
     
             & .form-field{
                 width: 100%;
-                height: 3.5rem;
+                height: 4.5rem;
                 border: 1px solid #DDD;
                 border-radius: .5rem;
                 color: #818181;
                 padding-left: 1rem;
+                font-size: 1.5rem;
             }
         }
         
         & .box-name-product{ grid-area: input1; }
-        & .box-price-product{ grid-area: input2; }
-        & .box-category-product{ grid-area: input3; }
-        & .box-description-product{ grid-area: input4; }
-        & .box-specification-product{ grid-area: input5; }
-        & .box-documents-product{ 
-            grid-area: file1; 
-            display: flex;
-            
-            & .wrap-file{
-                display: grid;
-                width: 100%;
-                gap: .5rem;
-            }
-
-            & .btn-input-file{
-                position: relative;
-                padding: 1rem 1.5rem;
-                font-size: 1.5rem;
-                line-height: 1.5rem;
-                border-radius: .3rem;
-                color: #FFF;
-                background-color: #1D74D7;
-                border: 0;
-                transition: 0.2s;
-                overflow: hidden;
-                width: 90%;
-                
-                & input[type="file"]{
-                    cursor: pointer;
-                    position: absolute;
-                    left: 0%;
-                    top: 0%;
-                    transform: scale(3);
-                    opacity: 0;
-                }
-                
-                &:hover{
-                    background-color: #FFF;
-                    border: 1px solid #1D74D7;
-                    color: #1D74D7;
-                }
-            }
-        }
+        & .box-price-min-product{ grid-area: input2; }
+        & .box-price-max-product{ grid-area: input3; }
+        & .box-category-product{ grid-area: input4; }
+        & .box-description-product{ grid-area: input5; }
+        & .box-specification-product{ grid-area: input6; }
+        & .box-documents-product{ grid-area: file1; }
 
         & .wrap-btns-actions{
             display: flex;
@@ -109,6 +74,7 @@
                 display: flex;
                 align-items: center;
                 gap: .5rem;
+                font-size: 1.5rem;
 
                 &.save{
                     background-color: #008f24;
@@ -133,7 +99,7 @@
                 }
 
                 & .ph-thin{
-                    font-size: 2rem;
+                    font-size: 2.5rem;
                 }
             }
         }

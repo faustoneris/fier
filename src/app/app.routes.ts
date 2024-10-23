@@ -14,5 +14,5 @@ export const routes: Routes = [
   { path: 'login', component: SignInComponent },
   { path: 'products', component: ProductsComponent, /* canActivate: [authorizationGuard] */ },
   { path: 'list-products', component: ListProductsComponent, /* canActivate: [authorizationGuard] */ },
-  { path: 'product-register', component: ProductRegisterComponent, canActivate: [createProductGuard] }
+  { path: 'product-register', component: ProductRegisterComponent, /* canActivate: [createProductGuard] */ }
 ];
