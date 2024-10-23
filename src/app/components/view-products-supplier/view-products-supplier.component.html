@@ -3,13 +3,41 @@
 <section class="container-view-products">
     <h1>Listagem de Produtos</h1>
 
-    
+    <div class="filter-content">
+        <label class="box box-name-product">
+            <p class="title-item">Nome do Produto</p>
+            <input type="text" id="productName" formControlName="productName" class="form-field">
+        </label>
+
+        <label class="box box-price-product">
+            <p class="title-item">Preço <= (Menor que)</p>
+            <input type="text" id="productPrice" formControlName="productPrice" class="form-field">
+        </label>
+
+        <label class="box box-category-product">
+            <p class="title-item">Categoria</p>
+            <select id="productCategory" formControlName="productCategory" class="form-field">
+                <option value="">Selecione uma opção...</option>
+                <option value="Mobile & Wearable Tech">Mobile & Wearable Tech</option>
+                <option value="Drones & Cameras">Drones & Cameras</option>
+                <option value="Headphones & Speakers">Headphones & Speakers</option>
+                <option value="Computers Tablets">Computers Tablets</option>
+                <option value="TV & Home Cinema">TV & Home Cinema</option>
+            </select>
+        </label>
+
+        <button class="btn-filter">
+            Filtrar
+            <i class="ph ph-magnifying-glass"></i>
+        </button>
+    </div>
 
     <table class="tbl-list-products">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome Produto</th>
+                <th>Categoria</th>
                 <th>Lance Máximo</th>
                 <th>Lance Mínimo</th>
                 <th>Estoque</th>
@@ -21,6 +49,7 @@
             <tr>
                 <td class="id-product-id">1</td>
                 <td class="product-name">iPhone 15 Pro Max</td>
+                <td class="product-category">Celular</td>
                 <td class="product-price-max">R$ 10.000,00</td>
                 <td class="product-price-min">R$ 9.500,00</td>
                 <td class="product-stock">23</td>
@@ -33,6 +62,7 @@
             <tr>
                 <td class="id-product-id">1</td>
                 <td class="product-name">iPhone 15 Pro Max</td>
+                <td class="product-category">Celular</td>
                 <td class="product-price-max">R$ 10.000,00</td>
                 <td class="product-price-min">R$ 9.500,00</td>
                 <td class="product-stock">23</td>
@@ -45,6 +75,7 @@
             <tr>
                 <td class="id-product-id">1</td>
                 <td class="product-name">iPhone 15 Pro Max</td>
+                <td class="product-category">Celular</td>
                 <td class="product-price-max">R$ 10.000,00</td>
                 <td class="product-price-min">R$ 9.500,00</td>
                 <td class="product-stock">23</td>

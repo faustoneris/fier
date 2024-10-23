@@ -15,6 +15,62 @@
         padding-bottom: 1rem;
     }
 
+    & .filter-content{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr .3fr;
+        gap: 2rem;
+        padding-block: 2rem;
+
+        & .box{
+            display: grid;
+            gap: .5rem;
+
+            & p.title-item{
+                font-size: 1.8rem;
+                color: #818181;
+            }
+    
+            & .textarea-input{
+                resize: none;
+                height: 10rem !important;
+                padding: 1rem;
+                color: #818181;
+            }
+    
+            & .form-field{
+                width: 100%;
+                height: 4.5rem;
+                border: 1px solid #DDD;
+                border-radius: .5rem;
+                color: #818181;
+                padding-left: 1rem;
+                font-size: 1.5rem;
+            }
+        }
+
+        & .btn-filter{
+            width: 100%;
+            height: 4.5rem;
+            text-align: center;
+            align-self: end;
+            border: none;
+            border-radius: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background: #1D74D7;
+            color: #FFF;
+            cursor: pointer;
+            transition: 1s ease-in-out;
+
+            &:hover{
+                background-color: #3a8eed;
+            }
+        }
+    }
+
     .tbl-list-products{
         width: 100%;
         text-align: center;
