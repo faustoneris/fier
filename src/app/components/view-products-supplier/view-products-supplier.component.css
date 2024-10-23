@@ -1,5 +1,5 @@
 .container-view-products{
-    margin: 5rem 2.5rem;
+    margin: 5rem 5rem;
     padding: 2.5rem;
     border: 1px solid #DDD;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -84,44 +84,5 @@
                 padding-block: 1rem;
             }
         }
-
-        & tbody{
-            & tr{
-                &:nth-child(even){
-                    background-color: #FFF;
-                }
-                &:nth-child(odd){
-                    background-color: #DDD;
-                }
-
-                & td{
-                    font-size: 1.5rem;
-                    padding-block: 1.5rem;
-
-                    &.product-actions{
-                        display: flex;
-                        gap: 1rem;
-                        align-items: center;
-                        justify-content: center;
-
-                        & button{
-                            font-size: 2.5rem;
-                            background-color: transparent;
-                            padding-inline: 1rem;
-                            transition: .3s ease-in-out;
-                            border: none;
-
-                            &:hover{
-                                text-decoration: underline;
-                                cursor: pointer;
-                                transform: scale(1.1);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        
     }
 }
