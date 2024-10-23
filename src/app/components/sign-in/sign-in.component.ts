@@ -80,9 +80,6 @@ export class SignInComponent {
     if (!this.isClient) {
       payload.document = this.loginForm.get('cnpj')?.value;
     }
-    
-    console.log('Payload: ', payload)
-    console.log('Enviou formulario!')
 
     this.authService.signIn(payload)
   }

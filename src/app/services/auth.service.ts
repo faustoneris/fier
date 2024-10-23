@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router'
 import * as jwt_decode from 'jwt-decode';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -10,21 +11,29 @@ export class AuthService {
   private apiUrl = 'http://localhost:3000/api/authentication' //Mudar a URL para o BFF
   private token: any
 
+  private jwtHelper = new JwtHelperService();
+
   constructor(private http: HttpClient, private router: Router) {
   }
 
   signIn(payload: any) {
     return this.http.post<any>(`${this.apiUrl}`, payload)
       .subscribe(response => {
-        this.token = response.access_token
-        localStorage.setItem('token', this.token)
-        this.router.navigate(['/'])
+        const token = response.access_token
+
+        if (token) {
+          localStorage.setItem('token', token)
+          this.router.navigate(['/']);
+        }
       })
   }
 
-  isLoggedIn(): boolean {
-    if (typeof window !== 'undefined') { 
-      return !!this.token || !!localStorage.getItem('token')
+  isLoggedIn(): any /* boolean */ {
+    if (typeof window !== 'undefined' && localStorage) {
+      const token = localStorage.getItem('token')
+
+      return token && !this.jwtHelper.isTokenExpired(token)
+      
     }
     return false
   }
@@ -37,18 +46,18 @@ export class AuthService {
   
 
   getRole(): 'SUPPLIER' | 'CUSTOMER' | null {
-    const token = this.token || localStorage.getItem('token')
-    if (!token || this.isTokenExpired(token)) return null
+    const token = localStorage.getItem('token');
+    if (!token || this.jwtHelper.isTokenExpired(token)) return null;
 
-    const decoded: any = jwt_decode.jwtDecode(token)
-    console.log('Decoded token:', decoded)
-    return decoded.loginType
+    const decodedToken = this.jwtHelper.decodeToken(token);
+    return decodedToken.loginType;
   }
 
   logout() {
-    this.token = null;
-    localStorage.removeItem('token')
-    this.router.navigate(['/login'])
+    if (typeof window !== 'undefined' && localStorage) {
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }
   }
   
   getToken(): string | null {
