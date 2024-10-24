@@ -8,6 +8,8 @@ import { ListProductsComponent } from './components/list-products/list-products.
 import { ProductRegisterComponent } from './components/product-register/product-register.component';
 import { createProductGuard } from './_guard/create-product.guard';
 import { ViewProductsSupplierComponent } from './components/view-products-supplier/view-products-supplier.component';
+import { SupplierReceivedBidsComponent } from './components/supplier-received-bids/supplier-received-bids.component';
+import { CustomerSubmittedBidsComponent } from './components/customer-submitted-bids/customer-submitted-bids.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, /* canActivate: [authorizationGuard] */ },
@@ -16,5 +18,7 @@ export const routes: Routes = [
   { path: 'products', component: ProductsComponent, /* canActivate: [authorizationGuard] */ },
   { path: 'list-products', component: ListProductsComponent, /* canActivate: [authorizationGuard] */ },
   { path: 'product-register', component: ProductRegisterComponent, canActivate: [createProductGuard] },
-  { path: 'view-products-supplier', component: ViewProductsSupplierComponent, /* canActivate: [authorizationGuard] */ }
+  { path: 'view-products-supplier', component: ViewProductsSupplierComponent, /* canActivate: [authorizationGuard] */ },
+  { path: 'received-bids', component: SupplierReceivedBidsComponent, /* canActivate: [authorizationGuard] */ },
+  { path: 'submitted-bids', component: CustomerSubmittedBidsComponent, /* canActivate: [authorizationGuard] */ }
 ];

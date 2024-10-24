@@ -1,4 +1,4 @@
-.container-view-products{
+.container-submitted-bids{
     margin: 5rem 5rem;
     padding: 2.5rem;
     border: 1px solid #DDD;
@@ -71,10 +71,18 @@
         }
     }
 
-    & .tbl-list-products{
+    & .tbl-submitted-bids{
         width: 100%;
         text-align: center;
         border-collapse: collapse;
+
+        & tr{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            align-items: center;
+            justify-content: center;
+
+        }
 
         & thead{
             border-bottom: 1px solid #DDD;
@@ -98,18 +106,28 @@
                     font-size: 1.5rem;
                     padding-block: 1.5rem;
 
-                    &.product-actions{
+                    &.bid-actions{
                         display: flex;
                         gap: 1rem;
-                        align-items: center;
                         justify-content: center;
-
-                        & button{
-                            font-size: 2.5rem;
+                        
+                        & .btn-bid{
+                            font-size: 1.5rem;
                             background-color: transparent;
                             padding-inline: 1rem;
                             transition: .3s ease-in-out;
                             border: none;
+                            color: #FFF;
+                            padding: 1rem;
+                            border-radius: 1rem;    
+
+                            &.accept-bid{
+                                background-color: #00ad42;
+                            }
+
+                            &.refuse-bid{
+                                background-color: #d60000;
+                            }
 
                             &:hover{
                                 text-decoration: underline;

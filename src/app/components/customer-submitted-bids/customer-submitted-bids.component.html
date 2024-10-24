@@ -1,0 +1,54 @@
+<app-header></app-header>
+
+<section class="container-submitted-bids">
+    <h1>Meus Lances</h1>
+
+    <div class="filter-content">
+        <label class="box box-name-product">
+            <p class="title-item">Nome do Produto</p>
+            <input type="text" id="productName" formControlName="productName" class="form-field">
+        </label>
+
+        <label class="box box-date-product">
+            <p class="title-item">Data</p>
+            <input type="date" id="productDate" formControlName="productDate" class="form-field">
+        </label>
+
+        <label class="box box-status-bid">
+            <p class="title-item">Status</p>
+            <select id="productStatus" formControlName="productStatus" class="form-field">
+                <option value="">Selecione uma opção...</option>
+                <option value="Aprovado">Aprovado</option>
+                <option value="Recusado">Recusado</option>
+                <option value="Aguardando Resposta">Aguardando Resposta</option>
+            </select>
+        </label>
+
+        <button class="btn-filter">
+            Filtrar
+            <i class="ph ph-magnifying-glass"></i>
+        </button>
+    </div>
+
+    <table class="tbl-submitted-bids">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Valor Oferecido</th>
+                <th>Data</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let bid of bids">
+                <td class="bid-product">{{ bid.product}}</td>
+                <td class="bid-price">{{ bid.price | currency:'BRL' }}</td>
+                <td class="bid-date">{{ bid.date }}</td>
+                <td class="bid-status">{{ bid.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<app-footer></app-footer>
