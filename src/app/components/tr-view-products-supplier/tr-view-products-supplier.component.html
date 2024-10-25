@@ -1,11 +1,11 @@
-<tr>
-    <td class="product-name">{{ product.name }}</td>
-    <td class="product-category">{{ product.category }}</td>
-    <td class="product-price-max">{{ product.priceMax | currency:'BRL' }}</td>
-    <td class="product-price-min">{{ product.priceMin | currency:'BRL' }}</td>
-    <td class="product-stock">{{ product.stock }}</td>
-    <td class="product-actions">
-      <button><i class="ph ph-pencil"></i></button>
-      <button><i class="ph ph-trash"></i></button>
-    </td>
-  </tr>
+<div class="tr {{ classRow }}">
+  <div class="td product-name">{{ product.name }}</div>
+  <div class="td product-category">{{ product.category }}</div>
+  <div class="td product-price-max">{{ product.priceMax | currency:'BRL' }}</div>
+  <div class="td product-price-min">{{ product.priceMin | currency:'BRL' }}</div>
+  <div class="td product-stock">{{ product.stock }}</div>
+  <div class="td product-actions">
+    <button><i class="ph ph-pencil"></i></button>
+    <button><i class="ph ph-trash"></i></button>
+  </div>
+</div>

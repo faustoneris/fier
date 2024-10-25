@@ -1,0 +1,17 @@
+.tr{
+    display: grid;
+    grid-template-columns: 1fr .7fr .7fr 1fr;
+
+    &.even-row{
+        background-color: #DDD;
+    }
+    
+    &.odd-row{
+        background-color: #FFF;
+    }
+
+    & .td{
+        font-size: 1.7rem;
+        padding-block: 1.5rem;
+    }
+}

@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { TrCustomerSubmittedBidsComponent } from '../tr-customer-submitted-bids/tr-customer-submitted-bids.component';
 
 @Component({
   selector: 'app-customer-submitted-bids',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, CommonModule],
+  imports: [HeaderComponent, FooterComponent, CommonModule, TrCustomerSubmittedBidsComponent],
   templateUrl: './customer-submitted-bids.component.html',
   styleUrl: './customer-submitted-bids.component.css'
 })
-export class CustomerSubmittedBidsComponent {
+export class CustomerSubmittedBidsComponent implements OnInit {
   bids: any[] = [];
 
   ngOnInit() {

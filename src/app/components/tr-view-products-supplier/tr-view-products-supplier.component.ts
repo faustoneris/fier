@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-tr-view-products-supplier',
   standalone: true,
@@ -9,4 +10,11 @@ import { CommonModule } from '@angular/common';
 })
 export class TrViewProductsSupplierComponent {
   @Input() product: any;
+  @Input() classRow!: string;
+
+  //@Input() name!: string;
+  //@Input() category!: string;
+  //@Input() priceMax!: number;
+  //@Input() priceMin!: number;
+  //@Input() stock!: number;
 }

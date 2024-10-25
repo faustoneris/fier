@@ -32,32 +32,26 @@
         </button>
     </div>
 
-    <table class="tbl-list-products">
-        <thead>
-            <tr>
-                <th>Nome Produto</th>
-                <th>Categoria</th>
-                <th>Valor Máximo de Lance</th>
-                <th>Valor Mínimo de Lance</th>
-                <th>Estoque</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
+    <div class="tbl-list-products">
+        <div class="thead">
+            <div class="tr">
+                <div class="th">Nome Produto</div>
+                <div class="th">Categoria</div>
+                <div class="th">Lance Máximo</div>
+                <div class="th">Lance Mínimo</div>
+                <div class="th">Estoque</div>
+                <div class="th">Ações</div>
+            </div>
+        </div>
 
-        <tbody>
-            <tr *ngFor="let product of products">
-                <td class="product-name">{{ product.name }}</td>
-                <td class="product-category">{{ product.category }}</td>
-                <td class="product-price-max">{{ product.priceMax | currency:'BRL' }}</td>
-                <td class="product-price-min">{{ product.priceMin | currency:'BRL' }}</td>
-                <td class="product-stock">{{ product.stock }}</td>
-                <td class="product-actions">
-                  <button><i class="ph ph-pencil"></i></button>
-                  <button><i class="ph ph-trash"></i></button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="tbody">
+            <app-tr-view-products-supplier
+                *ngFor="let product of products; let i = index" 
+                [classRow]="i % 2 === 0 ? 'even-row' : 'odd-row'"
+                [product]="product"
+            ></app-tr-view-products-supplier>
+        </div>
+    </div>
 </section>
 
 <app-footer></app-footer>

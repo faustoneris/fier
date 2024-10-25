@@ -74,68 +74,17 @@
     & .tbl-submitted-bids{
         width: 100%;
         text-align: center;
-        border-collapse: collapse;
+        display: grid;
 
-        & tr{
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            align-items: center;
-            justify-content: center;
+        & .thead{
+            & .tr{
+                display: grid;
+                grid-template-columns: 1fr .7fr .7fr 1fr;
 
-        }
-
-        & thead{
-            border-bottom: 1px solid #DDD;
-            & th{
-                font-size: 2.3rem;
-                font-weight: 400;
-                padding-block: 1rem;
-            }
-        }
-
-        & tbody{
-            & tr{
-                &:nth-child(even){
-                    background-color: #FFF;
-                }
-                &:nth-child(odd){
-                    background-color: #DDD;
-                }
-
-                & td{
-                    font-size: 1.5rem;
-                    padding-block: 1.5rem;
-
-                    &.bid-actions{
-                        display: flex;
-                        gap: 1rem;
-                        justify-content: center;
-                        
-                        & .btn-bid{
-                            font-size: 1.5rem;
-                            background-color: transparent;
-                            padding-inline: 1rem;
-                            transition: .3s ease-in-out;
-                            border: none;
-                            color: #FFF;
-                            padding: 1rem;
-                            border-radius: 1rem;    
-
-                            &.accept-bid{
-                                background-color: #00ad42;
-                            }
-
-                            &.refuse-bid{
-                                background-color: #d60000;
-                            }
-
-                            &:hover{
-                                text-decoration: underline;
-                                cursor: pointer;
-                                transform: scale(1.1);
-                            }
-                        }
-                    }
+                & .th{
+                    font-size: 2.2rem;
+                    font-weight: 400;
+                    padding-block: 1rem;
                 }
             }
         }

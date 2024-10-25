@@ -30,19 +30,21 @@
         </button>
     </div>
 
-    <table class="tbl-received-bids">
-        <thead>
-            <tr>
-                <th>Produto</th>
-                <th>Cliente</th>
-                <th>Valor</th>
-                <th>Data</th>
-                <th>Status</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
 
-        <tbody>
+    <div class="tbl-received-bids">
+        <div class="thead">
+            <div class="tr">
+                <div class="th">Produto</div>
+                <div class="th">Cliente</div>
+                <div class="th">Valor</div>
+                <div class="th">Data</div>
+                <div class="th">Status</div>
+                <div class="th">Ações</div>
+            </div>
+        </div>
+
+        <div class="tbody">
+            <!--
             <tr *ngFor="let bid of bids">
                 <td class="bid-product">{{ bid.product}}</td>
                 <td class="bid-customer-name">{{ bid.customer }}</td>
@@ -54,8 +56,15 @@
                     <button class="btn-bid refuse-bid">Recusar Proposta</button>
                 </td>
             </tr>
-        </tbody>
-    </table>
+            --->
+            
+            <app-tr-supplier-received-bids
+                *ngFor="let bid of bids; let i = index" 
+                [classRow]="i % 2 === 0 ? 'even-row' : 'odd-row'"
+                [bid]="bid"
+            ></app-tr-supplier-received-bids>
+        </div>
+    </div>
 </section>
 
 <app-footer></app-footer>

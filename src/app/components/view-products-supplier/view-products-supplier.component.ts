@@ -15,7 +15,6 @@ export class ViewProductsSupplierComponent implements OnInit{
   products: any[] = [];
 
   ngOnInit() {
-    // Dados fictícios para popular a tabela
     this.products = [
       {
         id: 312,
