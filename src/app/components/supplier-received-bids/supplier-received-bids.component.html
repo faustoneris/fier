@@ -1,0 +1,70 @@
+<app-header></app-header>
+
+<section class="container-received-bids">
+    <h1>Lances Recebidos</h1>
+
+    <div class="filter-content">
+        <label class="box box-name-product">
+            <p class="title-item">Nome do Produto</p>
+            <input type="text" id="productName" formControlName="productName" class="form-field">
+        </label>
+
+        <label class="box box-date-product">
+            <p class="title-item">Data</p>
+            <input type="date" id="productDate" formControlName="productDate" class="form-field">
+        </label>
+
+        <label class="box box-status-bid">
+            <p class="title-item">Status</p>
+            <select id="productStatus" formControlName="productStatus" class="form-field">
+                <option value="">Selecione uma opção...</option>
+                <option value="Aprovado">Aprovado</option>
+                <option value="Recusado">Recusado</option>
+                <option value="Aguardando Resposta">Aguardando Resposta</option>
+            </select>
+        </label>
+
+        <button class="btn-filter">
+            Filtrar
+            <i class="ph ph-magnifying-glass"></i>
+        </button>
+    </div>
+
+
+    <div class="tbl-received-bids">
+        <div class="thead">
+            <div class="tr">
+                <div class="th">Produto</div>
+                <div class="th">Cliente</div>
+                <div class="th">Valor</div>
+                <div class="th">Data</div>
+                <div class="th">Status</div>
+                <div class="th">Ações</div>
+            </div>
+        </div>
+
+        <div class="tbody">
+            <!--
+            <tr *ngFor="let bid of bids">
+                <td class="bid-product">{{ bid.product}}</td>
+                <td class="bid-customer-name">{{ bid.customer }}</td>
+                <td class="bid-price">{{ bid.price | currency:'BRL' }}</td>
+                <td class="bid-date">{{ bid.date }}</td>
+                <td class="bid-status">{{ bid.status }}</td>
+                <td class="bid-actions">
+                    <button class="btn-bid accept-bid">Aceitar Proposta</button>
+                    <button class="btn-bid refuse-bid">Recusar Proposta</button>
+                </td>
+            </tr>
+            --->
+            
+            <app-tr-supplier-received-bids
+                *ngFor="let bid of bids; let i = index" 
+                [classRow]="i % 2 === 0 ? 'even-row' : 'odd-row'"
+                [bid]="bid"
+            ></app-tr-supplier-received-bids>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

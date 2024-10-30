@@ -1,0 +1,48 @@
+.tr{
+    display: grid;
+    grid-template-columns: .8fr .5fr .5fr .5fr .7fr 1fr;
+
+    &.even-row{
+        background-color: #DDD;
+    }
+    
+    &.odd-row{
+        background-color: #FFF;
+    }
+
+    & .td{
+        font-size: 1.7rem;
+        padding-block: 1.5rem;
+
+        &.bid-actions{
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            
+            & .btn-bid{
+                font-size: 1.5rem;
+                background-color: transparent;
+                padding-inline: 1rem;
+                transition: .3s ease-in-out;
+                border: none;
+                color: #FFF;
+                padding: 1rem;
+                border-radius: 1rem;    
+
+                &.accept-bid{
+                    background-color: #00ad42;
+                }
+
+                &.refuse-bid{
+                    background-color: #d60000;
+                }
+
+                &:hover{
+                    text-decoration: underline;
+                    cursor: pointer;
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+}

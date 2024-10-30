@@ -1,0 +1,53 @@
+<app-header></app-header>
+
+<section class="container-submitted-bids">
+    <h1>Meus Lances</h1>
+
+    <div class="filter-content">
+        <label class="box box-name-product">
+            <p class="title-item">Nome do Produto</p>
+            <input type="text" id="productName" formControlName="productName" class="form-field">
+        </label>
+
+        <label class="box box-date-product">
+            <p class="title-item">Data</p>
+            <input type="date" id="productDate" formControlName="productDate" class="form-field">
+        </label>
+
+        <label class="box box-status-bid">
+            <p class="title-item">Status</p>
+            <select id="productStatus" formControlName="productStatus" class="form-field">
+                <option value="">Selecione uma opção...</option>
+                <option value="Aprovado">Aprovado</option>
+                <option value="Recusado">Recusado</option>
+                <option value="Aguardando Resposta">Aguardando Resposta</option>
+            </select>
+        </label>
+
+        <button class="btn-filter">
+            Filtrar
+            <i class="ph ph-magnifying-glass"></i>
+        </button>
+    </div>
+
+    <div class="tbl-submitted-bids">
+        <div class="thead">
+            <div class="tr">
+                <div class="th">Produto</div>
+                <div class="th">Valor Oferecido</div>
+                <div class="th">Data</div>
+                <div class="th">Status</div>
+            </div>
+        </div>
+
+        <div class="tbody">
+            <app-tr-customer-submitted-bids
+                *ngFor="let bid of bids; let i = index" 
+                [classRow]="i % 2 === 0 ? 'even-row' : 'odd-row'"
+                [bid]="bid"
+            ></app-tr-customer-submitted-bids>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

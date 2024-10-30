@@ -1,0 +1,57 @@
+<app-header></app-header>
+
+<section class="container-view-products">
+    <h1>Listagem de Produtos</h1>
+
+    <div class="filter-content">
+        <label class="box box-name-product">
+            <p class="title-item">Nome do Produto</p>
+            <input type="text" id="productName" formControlName="productName" class="form-field">
+        </label>
+
+        <label class="box box-price-product">
+            <p class="title-item">Preço <= (Menor que)</p>
+            <input type="text" id="productPrice" formControlName="productPrice" class="form-field">
+        </label>
+
+        <label class="box box-category-product">
+            <p class="title-item">Categoria</p>
+            <select id="productCategory" formControlName="productCategory" class="form-field">
+                <option value="">Selecione uma opção...</option>
+                <option value="Mobile & Wearable Tech">Mobile & Wearable Tech</option>
+                <option value="Drones & Cameras">Drones & Cameras</option>
+                <option value="Headphones & Speakers">Headphones & Speakers</option>
+                <option value="Computers Tablets">Computers Tablets</option>
+                <option value="TV & Home Cinema">TV & Home Cinema</option>
+            </select>
+        </label>
+
+        <button class="btn-filter">
+            Filtrar
+            <i class="ph ph-magnifying-glass"></i>
+        </button>
+    </div>
+
+    <div class="tbl-list-products">
+        <div class="thead">
+            <div class="tr">
+                <div class="th">Nome Produto</div>
+                <div class="th">Categoria</div>
+                <div class="th">Lance Máximo</div>
+                <div class="th">Lance Mínimo</div>
+                <div class="th">Estoque</div>
+                <div class="th">Ações</div>
+            </div>
+        </div>
+
+        <div class="tbody">
+            <app-tr-view-products-supplier
+                *ngFor="let product of products; let i = index" 
+                [classRow]="i % 2 === 0 ? 'even-row' : 'odd-row'"
+                [product]="product"
+            ></app-tr-view-products-supplier>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>
