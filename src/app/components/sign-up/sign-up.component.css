@@ -39,7 +39,7 @@ form {
 
 input {
   padding: 1.5rem 1.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1.5rem;
@@ -103,4 +103,9 @@ p span a {
 
 .form-toggle button:hover {
   text-decoration: underline;
+}
+
+.validation-error {
+  color: red;
+  margin-bottom: .5rem;
 }

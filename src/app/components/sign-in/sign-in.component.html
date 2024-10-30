@@ -3,34 +3,45 @@
     <div class="form">
       <h1>Fier</h1>
       <div class="form-toggle">
-        <button type="button" (click)="isClient = true" [class.active]="isClient">Cliente</button>
-        <button type="button" (click)="isClient = false" [class.active]="!isClient">Fornecedor</button>
+        <button type="button" (click)="setClient(true)" [class.active]="isClient">Cliente</button>
+        <button type="button" (click)="setClient(false)" [class.active]="!isClient">Fornecedor</button>
       </div>
-      <form (ngSubmit)="onLogin()">
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" #formDir="ngForm">
         <input
           *ngIf="isClient"
-          [(ngModel)]="user.cpf"
           name="cpf"
-          type="text"
+          type="number"
           placeholder="CPF"
           autocomplete="off"
+          required
+          formControlName="cpf"
         />
+        <div *ngIf="cpf.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="cpf.errors?.['required']" >Esse campo é obrigatório!</p>
+        </div>
         <input
           *ngIf="!isClient"
-          [(ngModel)]="user.cnpj"
           name="cnpj"
-          type="text"
+          type="number"
           placeholder="CNPJ"
           autocomplete="off"
+          required
+          formControlName="cnpj"
         />
-
+        <div *ngIf="cnpj.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="cnpj.errors?.['required']" >Esse campo é obrigatório!</p>
+        </div>
         <input
-          [(ngModel)]="user.password"
           name="password"
           type="password"
           placeholder="Senha"
           autocomplete="new-password"
+          required
+          formControlName="password"
         />
+        <div *ngIf="password.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="password.errors?.['required']" >Esse campo é obrigatório!</p>
+        </div>
         <button type="submit">Entrar</button>
       </form>
       <p class="linkToRegister" >Não possui conta? <span><a class="linkToRegister" [routerLink]="['/register']" >Cadastrar</a></span></p>
