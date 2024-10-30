@@ -16,6 +16,9 @@
 
       & .list-products-container{
           & .products-total{
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
               font-size: 1.2rem;
           }
 
@@ -100,3 +103,15 @@
       }
   }
 }
+
+.products-total > button {
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.products-total > button:hover {
+    color: #0D6EDE;
+}
+
