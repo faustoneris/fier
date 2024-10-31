@@ -4,6 +4,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SuppliersProductService } from '../../services/suppliers-product.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-register',
@@ -14,18 +15,20 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductRegisterComponent {
   productForm: FormGroup
+  submitted = false
 
   constructor(
     private fb: FormBuilder,
-    private suppliersProductService: SuppliersProductService
+    private suppliersProductService: SuppliersProductService,
+    private router: Router
   ) {
     this.productForm = this.fb.group({
       productName: ['', Validators.required],
       productPriceMin: ['', Validators.required],
       productPriceMax: ['', Validators.required],
       productCategory: ['', Validators.required],
-      productDescription: [''],
-      productSpecification: [''],
+      productDescription: ['', Validators.required],
+      productSpecification: ['', Validators.required],
       productImages: [null]
     })
   }
@@ -34,16 +37,17 @@ export class ProductRegisterComponent {
     if (this.productForm.valid) {
       const formData = this.productForm.value
 
-      //payload teste (fix)
+      //TROCAR ESSE PAYLOAD PARA O NOVO QUE OS MLK AINDA TEM Q FAZER
       const payload = {
-        name: formData.productName, 
-        priceMin: formData.productPriceMin, 
-        priceMax: formData.productPriceMax, 
+        name: formData.productName,
+        price: formData.productPriceMin, 
+        //priceMin: formData.productPriceMin, #ISSO VAI TER NO PAYLOAD NOVO
+        //priceMax: formData.productPriceMax, #ISSO VAI TER NO PAYLOAD NOVO
         image: "~/images/",
         category: formData.productCategory,
         feedbacks: [],
         specifications: {
-            model: formData.productName,
+            model: null,
             color: null,
             description: formData.productDescription
         }
@@ -53,9 +57,11 @@ export class ProductRegisterComponent {
         next: (response) => {
           console.log('Produto cadastrado com sucesso:', response)
           this.onClear()
+          this.router.navigate(['/view-products-supplier'])
         },
         error: (error) => {
           console.error('Erro ao cadastrar o produto:', error)
+          alert('Erro ao cadastrar um produto!')
         }
       })
     } else {
@@ -73,4 +79,29 @@ export class ProductRegisterComponent {
       this.productForm.patchValue({ productImages: file });
     }
   }
+
+  get productName() {
+    return this.productForm.get('productName')!
+  }
+
+  get productPriceMin() {
+    return this.productForm.get('productPriceMin')!
+  }
+
+  get productPriceMax() {
+    return this.productForm.get('productPriceMax')!
+  }
+
+  get productCategory() {
+    return this.productForm.get('productCategory')!
+  }
+  
+  get productDescription() {
+    return this.productForm.get('productDescription')!
+  }
+
+  get productSpecification() {
+    return this.productForm.get('productSpecification')!
+  }
+
 }

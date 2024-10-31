@@ -3,21 +3,30 @@
 <div class="product-register-container">
   <h1>Cadastro de Produto</h1>
 
-  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" #formDir="ngForm">
     <div class="wrap-inputs">
       <label class="box box-name-product">
         <p class="title-item">Nome do Produto</p>
         <input type="text" id="productName" formControlName="productName" class="form-field">
+        <div *ngIf="productName.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="productName.errors?.['required']" >Esse campo é obrigatório!</p>
+        </div>
       </label>
 
       <label class="box box-price-min-product">
         <p class="title-item">Preço Mínimo</p>
-        <input type="text" id="productPriceMin" formControlName="productPriceMin" class="form-field">
+        <input type="number" id="productPriceMin" formControlName="productPriceMin" class="form-field">
+        <div *ngIf="productPriceMin.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="productPriceMin.errors?.['required']" >Esse campo é obrigatório!</p>
+        </div>
       </label>
 
       <label class="box box-price-max-product">
         <p class="title-item">Preço Máximo</p>
-        <input type="text" id="productPriceMax" formControlName="productPriceMax" class="form-field">
+        <input type="number" id="productPriceMax" formControlName="productPriceMax" class="form-field">
+        <div *ngIf="productPriceMax.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="productPriceMax.errors?.['required']" >Esse campo é obrigatório!</p>
+        </div>
       </label>
 
       <label class="box box-category-product">
@@ -30,16 +39,25 @@
           <option value="Computers Tablets">Computers Tablets</option>
           <option value="TV & Home Cinema">TV & Home Cinema</option>
         </select>
+        <div *ngIf="productCategory.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="productCategory.errors?.['required']" >Esse campo é obrigatório!</p>
+        </div>
       </label>
 
       <label class="box box-description-product">
         <p class="title-item">Descrição</p>
         <textarea id="productDescription" formControlName="productDescription" class="form-field textarea-input"></textarea>
+        <div *ngIf="productDescription.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="productDescription.errors?.['required']" >Esse campo é obrigatório!</p>
+        </div>
       </label>
 
       <label class="box box-specification-product">
         <p class="title-item">Especificações</p>
         <textarea id="productSpecification" formControlName="productSpecification" class="form-field textarea-input"></textarea>
+        <div *ngIf="productSpecification.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="productSpecification.errors?.['required']" >Esse campo é obrigatório!</p>
+        </div>
       </label>
 
       <label class="box box-documents-product">
@@ -49,7 +67,7 @@
       
       <div class="wrap-btns-actions">
         <button type="button" class="btn-action clear" (click)="onClear()">Limpar <i class="ph-thin ph-x-circle"></i></button>
-        <button type="submit" class="btn-action save">Salvar <i class="ph-thin ph-check-circle"></i></button>
+        <button type="submit" class="btn-action save" >Salvar <i class="ph-thin ph-check-circle"></i></button>
       </div>
     </div>
   </form>
