@@ -1,12 +1,12 @@
 <app-header></app-header>
 <!--- SECTION 2 - PRODUCT --->
-<section class="product-container">
+<section class="product-container" *ngIf="product">
   <div class="product-imgs">
-      <img src="assets/images/produto1.png" alt="Produto">
+      <img src="assets/images/produto2.png" alt="Produto">
   </div>
 
   <div class="product-details">
-      <h2 class="product-name">Round Mini Portable Bluetooth Speaker</h2>
+      <h2 class="product-name">{{ product.name }}</h2>
 
       <div class="product-rating">
           <span class="stars">
@@ -32,8 +32,7 @@
 
       <div class="product-price">
           <span class="price-discount">7% OFF no Pix</span>
-          <span class="old-price">R$ 399,99</span>
-          <span class="price">R$ 249,99</span>
+          <span class="price">R$ {{ product.price }}</span>
       </div>
 
       <div class="product-buttons">
@@ -44,26 +43,23 @@
 
   <div class="product-more-info">
       <div class="product-wrap-toggle">
-          <div class="toggle-title">
-              <span>Product Info</span>
-              <span><i class="ph ph-plus"></i></span>
+          <div class="toggle-title" (click)="toogleDetails()">
+              <span>Descrição</span>
+              <span><i class="ph" [ngClass]="showDetails ? 'ph-minus' : 'ph-plus'"></i></span>
           </div>
 
-          <div class="toggle-details hide">
-              I'm a product detail. I'm a great place to add more information 
-              about your product such as sizing, material, care and cleaning 
-              instructions. This is also a great space to write what makes this 
-              product special and how your customers can benefit from this item.
+          <div class="toggle-details" [ngClass]="{ 'hide': !showDetails }">
+              {{ product.specifications.description }}
           </div>
       </div>
 
       <div class="product-wrap-toggle">
-          <div class="toggle-title">
+          <div class="toggle-title" (click)="toogleRefundPolicy()">
               <span>Return & Refund Policy</span>
-              <span><i class="ph ph-plus"></i></span>
+              <span><i class="ph" [ngClass]="showRefundPolicy ? 'ph-minus' : 'ph-plus'"></i></span>
           </div>
 
-          <div class="toggle-details hide">
+          <div class="toggle-details" [ngClass]="{ 'hide': !showRefundPolicy }">
               I'm a Return and Refund policy. I'm a great place to let your 
               customers know what to do in case they are dissatisfied with
               their purchase. Having a straightforward refund or exchange
@@ -73,12 +69,12 @@
       </div>
 
       <div class="product-wrap-toggle">
-          <div class="toggle-title">
+          <div class="toggle-title" (click)="toogleShippingInfo()">
               <span>Shipping Info</span>
-              <span><i class="ph ph-plus"></i></span>
+              <span><i class="ph" [ngClass]="showShippingInfo ? 'ph-minus' : 'ph-plus'"></i></span>
           </div>
 
-          <div class="toggle-details hide">
+          <div class="toggle-details" [ngClass]="{ 'hide': !showShippingInfo }">
               I'm a shipping policy. I'm a great place to add more information
               about your shipping methods, packaging and cost. Providing
               straightforward information about your shipping policy is a

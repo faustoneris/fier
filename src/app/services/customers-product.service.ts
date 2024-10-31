@@ -14,7 +14,7 @@ export class CustomersProductService {
     return this.http.get<any[]>(this.url)
   }
 
-  getCustomerProduct(id: number): Observable<any> {
+  getCustomerProduct(id: string): Observable<any> {
     return this.http.get<any>(`${this.url}/${id}`);
   }
 
