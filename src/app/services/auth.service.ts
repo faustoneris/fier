@@ -24,6 +24,10 @@ export class AuthService {
         if (token) {
           localStorage.setItem('token', token)
           this.router.navigate(['/']);
+        } else {
+          console.log(`log: ${JSON.stringify(response)}`);
+
+          alert('usuario invalido')
         }
       })
   }
@@ -33,7 +37,7 @@ export class AuthService {
       const token = localStorage.getItem('token')
 
       return token && !this.jwtHelper.isTokenExpired(token)
-      
+
     }
     return false
   }
@@ -43,7 +47,7 @@ export class AuthService {
     const now = Math.floor(Date.now() / 1000)
     return decoded.exp < now
   }
-  
+
 
   getRole(): 'SUPPLIER' | 'CUSTOMER' | null {
     const token = localStorage.getItem('token');
@@ -59,7 +63,7 @@ export class AuthService {
       this.router.navigate(['/login']);
     }
   }
-  
+
   getToken(): string | null {
     return this.token || localStorage.getItem('token');
   }
