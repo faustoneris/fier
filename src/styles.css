@@ -33,6 +33,7 @@
   &:hover{
       background-color: #FFF;
       color: #1D74D7;
+      border: 1px solid #1D74D7;
   }
 }
 

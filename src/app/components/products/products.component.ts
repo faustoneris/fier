@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { FooterComponent } from '../footer/footer.component';
-import { ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CustomersProductService } from '../../services/customers-product.service';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, CommonModule],
+  imports: [HeaderComponent, FooterComponent, FormsModule, CommonModule, RouterModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
@@ -42,8 +43,15 @@ export class ProductsComponent implements OnInit {
   toogleRefundPolicy() {
     this.showRefundPolicy = !this.showRefundPolicy
   }
+  bidMade = false;
 
-  toogleShippingInfo() {
-    this.showShippingInfo = !this.showShippingInfo
+  bidInfos = {
+    bidAmount: '',
+    qtdProduct: ''
+  }
+
+  onBid(){
+    console.log("Bid button clicked");
+    this.bidMade = true;
   }
 }
