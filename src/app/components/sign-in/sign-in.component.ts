@@ -75,10 +75,12 @@ export class SignInComponent {
 
     if (this.isClient) {
       payload.document = this.loginForm.get('cpf')?.value;
+      payload.loginType = 'CUSTOMER'; // mudar para pegar d forma dinamica
     }
 
     if (!this.isClient) {
       payload.document = this.loginForm.get('cnpj')?.value;
+      payload.loginType = 'SUPPLIER'; // mudar para pegar d forma dinamica
     }
 
     this.authService.signIn(payload)

@@ -8,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api/authentication' //Mudar a URL para o BFF
+  private apiUrl = 'http://localhost:3001/authentication' //Mudar a URL para o BFF
   private token: any
 
   private jwtHelper = new JwtHelperService();
@@ -19,15 +19,15 @@ export class AuthService {
   signIn(payload: any) {
     return this.http.post<any>(`${this.apiUrl}`, payload)
       .subscribe(response => {
-        const token = response.access_token
+        if (response) {
+          const token = response.access_token
 
-        if (token) {
-          localStorage.setItem('token', token)
-          this.router.navigate(['/']);
+          if (token) {
+            localStorage.setItem('token', token)
+            this.router.navigate(['/']);
+          }
         } else {
-          console.log(`log: ${JSON.stringify(response)}`);
-
-          alert('usuario invalido')
+            alert('usuario e/ou senha invalidos')
         }
       })
   }
