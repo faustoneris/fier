@@ -26,9 +26,9 @@ export class AuthService {
             localStorage.setItem('token', token)
             this.router.navigate(['/']);
           }
-        } else {
-            alert('usuario e/ou senha invalidos')
         }
+      }, err => {
+        alert(`Ocorreu um erro ao autenticar usuário: ${err.error.message}`)
       })
   }
 
