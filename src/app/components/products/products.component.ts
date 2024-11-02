@@ -37,12 +37,17 @@ export class ProductsComponent implements OnInit {
   }
 
   toogleDetails() {
-    this.showDetails = !this.showDetails
+    this.showDetails = !this.showDetails;
   }
 
   toogleRefundPolicy() {
-    this.showRefundPolicy = !this.showRefundPolicy
+    this.showRefundPolicy = !this.showRefundPolicy;
   }
+
+  toogleShippingInfo() {
+    this.showShippingInfo = !this.showShippingInfo;
+  }
+  
   bidMade = false;
 
   bidInfos = {

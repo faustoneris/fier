@@ -19,11 +19,11 @@
                     <i class="ph-fill ph-star"></i>
                 </span>
 
-                <span class="qtd-rating">4.7 (10 reviews)</span>
+                <span class="qtd-rating">4.7 (10 avaliações)</span>
             </div>
 
             <div class="product-colors">
-                <p>COLORS</p>
+                <p>Cores</p>
 
                 <div class="options-color">
                     <span class="green"></span>
@@ -67,46 +67,46 @@
 
     <div class="product-more-info">
         <div class="product-wrap-toggle">
-            <div class="toggle-title">
-                <span>Product Info</span>
+            <div class="toggle-title" (click)="toogleDetails()">
+                <span>Informações do Produto</span>
                 <span><i class="ph ph-plus"></i></span>
             </div>
 
-            <div class="toggle-details hide-toggle">
-                I'm a product detail. I'm a great place to add more information
-                about your product such as sizing, material, care and cleaning
-                instructions. This is also a great space to write what makes this
-                product special and how your customers can benefit from this item.
+            <div class="toggle-details" [class.hide-toggle]="!showDetails">
+                Sou um detalhe do produto. Sou um ótimo lugar para adicionar mais informações
+                sobre o seu produto, como tamanho, material, cuidado e limpeza
+                instruções. Este também é um ótimo espaço para escrever o que torna isso
+                produto especial e como seus clientes podem se beneficiar deste item.
             </div>
         </div>
 
         <div class="product-wrap-toggle">
-            <div class="toggle-title">
-                <span>Return & Refund Policy</span>
+            <div class="toggle-title" (click)="toogleRefundPolicy()">
+                <span>Política de devolução e reembolso</span>
                 <span><i class="ph ph-plus"></i></span>
             </div>
 
-            <div class="toggle-details hide-toggle">
-                I'm a Return and Refund policy. I'm a great place to let your
-                customers know what to do in case they are dissatisfied with
-                their purchase. Having a straightforward refund or exchange
-                policy is a great way to build trust and reassure your customers
-                that they can buy with confidence.
+            <div class="toggle-details hide-toggle" [class.hide-toggle]="!showRefundPolicy">
+                Sou uma política de devolução e reembolso. Eu sou um ótimo lugar para deixar seu
+                os clientes sabem o que fazer caso estejam insatisfeitos com
+                sua compra. Ter um reembolso ou troca simples
+                política é uma ótima maneira de construir confiança e tranquilizar seus clientes
+                que eles podem comprar com confiança.
             </div>
         </div>
 
         <div class="product-wrap-toggle">
-            <div class="toggle-title">
-                <span>Shipping Info</span>
+            <div class="toggle-title" (click)="toogleShippingInfo()">
+                <span>Informações de Envio</span>
                 <span><i class="ph ph-plus"></i></span>
             </div>
 
-            <div class="toggle-details hide-toggle">
-                I'm a shipping policy. I'm a great place to add more information
-                about your shipping methods, packaging and cost. Providing
-                straightforward information about your shipping policy is a
-                great way to build trust and reassure your customers that they
-                can buy from you with confidence.
+            <div class="toggle-details hide-toggle" [class.hide-toggle]="!showShippingInfo">
+                Eu sou uma política de envio. Sou um ótimo lugar para adicionar mais informações
+                sobre seus métodos de envio, embalagem e custo. Fornecendo
+                informações diretas sobre sua política de envio são uma
+                ótima maneira de construir confiança e garantir a seus clientes que eles
+                pode comprar de você com confiança.
             </div>
         </div>
     </div>
