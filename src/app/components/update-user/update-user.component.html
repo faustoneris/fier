@@ -1,0 +1,55 @@
+<app-header></app-header>
+
+<section class="container-update-user">
+    <h1>Editar usuário</h1>
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" #formDir="ngForm">
+        <div class="content-field">
+            <div class="row row-group-1">
+
+                <label class="box-item">
+                    <p class="title-item">CPF</p>
+                    <input type="text" id="userCPF" formControlName="userCPF" class="form-field" readonly>
+                </label>
+                
+                <label class="box-item">
+                    <p class="title-item">Nome</p>
+                    <input type="text" id="userName" formControlName="userName" class="form-field">
+                </label>
+            </div>
+
+            <div class="row row-group-2">
+                <label class="box-item">
+                    <p class="title-item">Telefone</p>
+                    <input type="text" id="userPhone" formControlName="userPhone" class="form-field">
+                </label>
+                
+                <label class="box-item">
+                    <p class="title-item">Celular</p>
+                    <input type="text" id="userCellphone" formControlName="userCellphone" class="form-field">
+                </label>
+
+                <label class="box-item">
+                    <p class="title-item">E-mail</p>
+                    <input type="text" id="userEmail" formControlName="userEmail" class="form-field">
+                </label>
+            </div>
+
+            <div class="row row-group-3">
+                <label class="box-item">
+                    <p class="title-item">Alterar Senha</p>
+                    <input type="text" id="userPwd" formControlName="userPwd" class="form-field">
+                </label>
+
+                <label class="box-item">
+                    <p class="title-item">Confirmar Senha</p>
+                    <input type="text" id="userConfirmPwd" formControlName="userConfirmPwd" class="form-field">
+                </label>
+
+                <button class="buttons">Atualizar</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+<app-footer></app-footer>

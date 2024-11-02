@@ -13,7 +13,7 @@ export class HeaderComponent {
   @Output() searchChanged = new EventEmitter<string>()
 
   onSearchChange(event: any): void {
-    const searchQuery = (event.target as HTMLInputElement).value
-    this.searchChanged.emit(searchQuery)
+    const searchQuery = (event.target as HTMLInputElement).value;
+    this.searchChanged.emit(searchQuery);
   }
 }
