@@ -1,45 +1,21 @@
-<div class="main">
-  <div class="login-container" id="container" #container> 
-    <!--//------- FORMULÁRIO DE CADASTRO -------//-->
-    <div class="form-container sign-up">
-      <form >
-        <h1>Crie sua conta</h1>
-
-        <select id="slcTypeUser" name="slcTypeUser" class="form-field">
-          <option value="">Selecione o tipo de usuário</option>
-          <option value="C">Cliente</option>
-          <option value="F">Fornecedor</option>
-        </select>
-        
-        <input name="name" type="text" placeholder="Nome" required class="form-field">
-        
-        <input name="email" type="email" placeholder="E-mail" required class="form-field">
-        
-        <input name="phoneNumber" type="number" placeholder="Telefone" required class="form-field">
-        
-        <input *ngIf="isClient" name="cpf" type="number" placeholder="CPF" autocomplete="off" required class="form-field" />
-        <input *ngIf="!isClient" name="cnpj" type="number" placeholder="CNPJ" autocomplete="off" required class="form-field" />
-        
-        <input name="password" type="password" placeholder="Senha" required class="form-field">
-        
-        <input name="confirmPassword" type="password" placeholder="Confirmar senha" required class="form-field">
-        
-        
-        <button type="submit" class="btn-primary">Cadastrar</button>
-      </form>
-    </div>
-    
+<div class="main-login">
+  <div class="login-container" id="container">
     <!--//------- FORMULÁRIO DE LOGIN -------//-->
     <div class="form-container sign-in">
-      <form (ngSubmit)="onLogin()" [formGroup]="loginForm" #formDir="ngForm">
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" #formDir="ngForm">
         <h1>Acesse sua conta</h1>
 
-        <select id="slcTypeUser" name="slcTypeUser" class="form-field" (change)="setClient($event)">
-          <option value="">Selecione o tipo de usuário</option>
-          <option value="C">Cliente</option>
-          <option value="F">Fornecedor</option>
-        </select>
-        
+        <div class="wrap-radio">
+          <label for="rdCustomer">
+            <input type="radio" name="rdClientType" id="rdCustomer" (click)="setClient(true)" checked>
+            <span>Cliente</span>
+          </label>
+          <label for="rdSupplier">
+            <input type="radio" name="rdClientType" id="rdSupplier" (click)="setClient(false)">
+            <span>Fornecedor</span>
+          </label>
+        </div>
+
         <input *ngIf="isClient" name="cpf" type="number" placeholder="CPF" autocomplete="off" required class="form-field" formControlName="cpf"/>
         <div *ngIf="cpf.invalid && formDir.submitted" class="validation-error">
           <p *ngIf="cpf.errors?.['required']" >Esse campo é obrigatório!</p>
@@ -59,20 +35,16 @@
         <button type="submit" class="btn-primary">Entrar</button>
       </form>
     </div>
-  
+
+    <!--//------- TOGGLE -------//-->
     <div class="toggle-container">
-        <div class="toggle">
-            <div class="toggle-panel toggle-left">
-                <h1>Bem-vindo de volta!</h1>
-                <p>Entre com seus dados para continuar acessando nossos serviços</p>
-                <button class="btn-primary hidden" id="login" #loginBtn>Entrar</button>
-            </div>
-            <div class="toggle-panel toggle-right">
-                <h1>Olá!</h1>
-                <p>Cadastre-se para utilizar todos os recursos da nossa plataforma</p>
-                <button class="btn-primary hidden" id="register" #registerBtn>Cadastrar</button>
-            </div>
+      <div class="toggle">
+        <div class="toggle-panel toggle-right">
+          <h1>Olá!</h1>
+          <p>Cadastre-se para utilizar todos os recursos da nossa plataforma</p>
+          <button class="btn-primary hidden" id="register" [routerLink]="['/register']">Cadastrar</button>
         </div>
+      </div>
     </div>
   </div>
 </div>

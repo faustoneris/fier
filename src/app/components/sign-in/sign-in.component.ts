@@ -1,14 +1,13 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { SignUpComponent } from '../sign-up/sign-up.component';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule, ReactiveFormsModule, SignUpComponent],
+  imports: [FormsModule, CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
@@ -16,26 +15,11 @@ export class SignInComponent {
   isClient = true;
 
   loginForm!: FormGroup;
-  registerForm!: FormGroup;
 
   constructor(private authService: AuthService, private fb: FormBuilder) {}
-  
-  @ViewChild('container', { static: true }) container!: ElementRef;
-  @ViewChild('registerBtn', { static: true }) registerBtn!: ElementRef;
-  @ViewChild('loginBtn', { static: true }) loginBtn!: ElementRef;
-
-  ngAfterViewInit() {
-    this.registerBtn.nativeElement.addEventListener('click', () => {
-      this.container.nativeElement.classList.add("active");
-    });
-
-    this.loginBtn.nativeElement.addEventListener('click', () => {
-      this.container.nativeElement.classList.remove("active");
-    });
-  }
 
   ngOnInit() {
-    this.initForm()
+    this.initForm();
   }
 
   initForm() {
@@ -45,24 +29,23 @@ export class SignInComponent {
       cnpj: ['', this.isClient ? Validators.required : []],
     })
 
-    this.updateFormControls()
+    this.updateFormControls();
   }
 
-  setClient(event: Event) {
-    const selectedValue = (event.target as HTMLSelectElement).value;
-    this.isClient = (selectedValue === 'C' || selectedValue === '') ? true : false;
+  setClient(value: boolean) {
+    this.isClient = value;
     this.updateFormControls();
   }
 
   updateFormControls() {
     if (this.isClient) {
-      this.loginForm.get('cpf')?.setValidators([Validators.required])
-      this.loginForm.get('cnpj')?.clearValidators()
-      this.loginForm.get('cnpj')?.setValue('')
+      this.loginForm.get('cpf')?.setValidators([Validators.required]);
+      this.loginForm.get('cnpj')?.clearValidators();
+      this.loginForm.get('cnpj')?.setValue('');
     } else {
-      this.loginForm.get('cnpj')?.setValidators([Validators.required])
-      this.loginForm.get('cpf')?.clearValidators()
-      this.loginForm.get('cpf')?.setValue('')
+      this.loginForm.get('cnpj')?.setValidators([Validators.required]);
+      this.loginForm.get('cpf')?.clearValidators();
+      this.loginForm.get('cpf')?.setValue('');
     }
 
     this.loginForm.get('cpf')?.updateValueAndValidity();
@@ -81,7 +64,7 @@ export class SignInComponent {
     return this.loginForm.get('password')!
   }
 
-  onLogin() {
+  onSubmit() {
     if (this.loginForm.invalid) {
       return;
     }
@@ -101,9 +84,5 @@ export class SignInComponent {
     }
 
     this.authService.signIn(payload)
-  }
-
-  onCreate(){
-    console.log('cria');
   }
 }
