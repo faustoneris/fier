@@ -13,15 +13,15 @@ import { CustomerSubmittedBidsComponent } from './components/customer-submitted-
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [ /* authorizationGuard */ ] },
+  { path: '', component: HomeComponent, canActivate: [  authorizationGuard  ] },
   { path: 'register', component: SignUpComponent, canActivate: [publicGuard] },
   { path: 'login', component: SignInComponent, canActivate: [publicGuard] },
-  { path: 'product/:id', component: ProductsComponent, canActivate: [/*authorizationGuard*/] },
-  { path: 'list-products', component: ListProductsComponent, canActivate: [/*authorizationGuard*/] },
-  { path: 'product-create', component: ProductRegisterComponent, canActivate: [/*authorizationGuard*/] }, //Ja esta para só supplier na auth
-  { path: 'view-products-supplier', component: ViewProductsSupplierComponent, canActivate: [/*authorizationGuard*/] }, //Ajustar para somente supplier ver
-  { path: 'received-bids', component: SupplierReceivedBidsComponent, canActivate: [/*authorizationGuard*/] }, //Ajustar para somente supplier ver
-  { path: 'submitted-bids', component: CustomerSubmittedBidsComponent, canActivate: [ /* authorizationGuard */ ] }, //Ajustar para somente usuário ver
-  { path: 'update-user', component: UpdateUserComponent, canActivate: [ /* authorizationGuard */ ] }, //Ajustar para somente usuário ver
+  { path: 'product/:id', component: ProductsComponent, canActivate: [ authorizationGuard ] },
+  { path: 'list-products', component: ListProductsComponent, canActivate: [ authorizationGuard ] },
+  { path: 'product-create', component: ProductRegisterComponent, canActivate: [ authorizationGuard ] }, //Ja esta para só supplier na auth
+  { path: 'view-products-supplier', component: ViewProductsSupplierComponent, canActivate: [ authorizationGuard ] }, //Ajustar para somente supplier ver
+  { path: 'received-bids', component: SupplierReceivedBidsComponent, canActivate: [ authorizationGuard ] }, //Ajustar para somente supplier ver
+  { path: 'submitted-bids', component: CustomerSubmittedBidsComponent, canActivate: [ authorizationGuard ] }, //Ajustar para somente usuário ver
+  { path: 'update-user', component: UpdateUserComponent, canActivate: [ authorizationGuard ] }, //Ajustar para somente usuário ver
   { path: '**', redirectTo: '', pathMatch: 'full' }, //TEM QUE SER A ULTIMA ROTA
 ];
