@@ -11,8 +11,11 @@
     }
 
     & .td{
-        font-size: 1.7rem;
+        font-size: 1.3rem;
         padding-block: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &.bid-actions{
             display: flex;
@@ -20,7 +23,7 @@
             justify-content: center;
             
             & .btn-bid{
-                font-size: 1.5rem;
+                font-size: 1.3rem;
                 background-color: transparent;
                 padding-inline: 1rem;
                 transition: .3s ease-in-out;

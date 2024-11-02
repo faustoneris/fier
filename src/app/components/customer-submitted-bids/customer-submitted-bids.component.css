@@ -8,7 +8,7 @@
     gap: 2rem;
 
     & h1{
-        font-size: 3rem;
+        font-size: 2.5rem;
         border-bottom: 1px solid #DDD;
         color: #818181;
         font-weight: 500;
@@ -26,7 +26,7 @@
             gap: .5rem;
 
             & p.title-item{
-                font-size: 1.8rem;
+                font-size: 1.5rem;
                 color: #818181;
             }
     
@@ -39,7 +39,7 @@
     
             & .form-field{
                 width: 100%;
-                height: 4.5rem;
+                height: 4rem;
                 border: 1px solid #DDD;
                 border-radius: .5rem;
                 color: #818181;
@@ -50,7 +50,7 @@
 
         & .btn-filter{
             width: 100%;
-            height: 4.5rem;
+            height: 4rem;
             text-align: center;
             align-self: end;
             border: none;
@@ -82,7 +82,7 @@
                 grid-template-columns: 1fr .7fr .7fr 1fr;
 
                 & .th{
-                    font-size: 2.2rem;
+                    font-size: 1.6rem;
                     font-weight: 400;
                     padding-block: 1rem;
                 }
