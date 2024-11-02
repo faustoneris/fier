@@ -1,51 +1,73 @@
-<div class="bg">
-  <div class="container">
-    <div class="form">
-      <h1>Fier</h1>
-      <div class="form-toggle">
-        <button type="button" (click)="setClient(true)" [class.active]="isClient">Cliente</button>
-        <button type="button" (click)="setClient(false)" [class.active]="!isClient">Fornecedor</button>
-      </div>
+<div class="main">
+  <div class="register-container" id="container" #container> 
+    <!--//------- FORMULÁRIO DE CADASTRO -------//-->
+    <div class="form-container sign-up">
       <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" #formDir="ngForm">
-        <input name="name" type="text" placeholder="Nome" required formControlName="name">
+        <h1>Crie sua conta</h1>
+
+        <div class="wrap-radio">
+          <label for="rdCustomer">
+            <input type="radio" name="rdClientType" id="rdCustomer" (click)="setClient(true)" checked>
+            <span>Cliente</span>
+          </label>
+          <label for="rdSupplier">
+            <input type="radio" name="rdClientType" id="rdSupplier" (click)="setClient(false)">
+            <span>Fornecedor</span>
+          </label>
+        </div>
+        
+        <input name="name" type="text" placeholder="Nome" required formControlName="name" class="form-field">
         <div *ngIf="name.invalid && formDir.submitted" class="validation-error">
           <p *ngIf="name.errors?.['required']" >Esse campo é obrigatório!</p>
         </div>
-        <input name="email" type="email" placeholder="E-mail" required formControlName="email">
+
+        <input name="email" type="email" placeholder="E-mail" required formControlName="email" class="form-field">
         <div *ngIf="email.invalid && formDir.submitted" class="validation-error">
           <p *ngIf="email.errors?.['required']" >Esse campo é obrigatório!</p>
           <p *ngIf="email.errors?.['email']" >Digite um email válido!</p>
         </div>
-        <input name="phoneNumber" type="number" placeholder="Telefone" required formControlName="phoneNumber">
+        
+        <input name="phoneNumber" type="number" placeholder="Telefone" required formControlName="phoneNumber" class="form-field">
         <div *ngIf="phoneNumber.invalid && formDir.submitted" class="validation-error">
           <p *ngIf="phoneNumber.errors?.['required']" >Esse campo é obrigatório!</p>
         </div>
         
         <ng-container *ngIf="isClient; else supplierFields">
-          <input name="cpf" type="text" placeholder="CPF" required formControlName="cpf">
+          <input name="cpf" type="text" placeholder="CPF" required formControlName="cpf" class="form-field">
           <div *ngIf="cpf.invalid && formDir.submitted" class="validation-error">
             <p *ngIf="cpf.errors?.['required']" >Esse campo é obrigatório!</p>
           </div>
         </ng-container>
+        
         <ng-template #supplierFields>
-          <input name="cnpj" type="text" placeholder="CNPJ" required formControlName="cnpj">
+          <input name="cnpj" type="text" placeholder="CNPJ" required formControlName="cnpj" class="form-field">
           <div *ngIf="cnpj.invalid && formDir.submitted" class="validation-error">
             <p *ngIf="cnpj.errors?.['required']" >Esse campo é obrigatório!</p>
           </div>
         </ng-template>
         
-        <input name="password" type="password" placeholder="Senha" required formControlName="password">
+        <input name="password" type="password" placeholder="Senha" required formControlName="password" class="form-field">
         <div *ngIf="password.invalid && formDir.submitted" class="validation-error">
           <p *ngIf="password.errors?.['required']" >Esse campo é obrigatório!</p>
         </div>
-        <input name="confirmPassword" type="password" placeholder="Confirmar senha" required formControlName="confirmPassword">
+        
+        <input name="confirmPassword" type="password" placeholder="Confirmar senha" required formControlName="confirmPassword" class="form-field">
         <div *ngIf="confirmPassword.invalid && formDir.submitted" class="validation-error">
           <p *ngIf="confirmPassword.errors?.['required']" >Esse campo é obrigatório!</p>
         </div>
-        <p>Ao criar sua conta, você confirma que leu e concorda com os <span>termos de uso</span> da Fier</p>
-        <button type="submit">Criar conta</button>
-        <p>Já possui conta? Faça o <span><a [routerLink]="['/login']">Login</a></span></p>
+        
+        <button type="submit" class="btn-primary">Cadastrar</button>
       </form>
+    </div>
+    
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-left">
+          <h1>Bem-vindo de volta!</h1>
+          <p>Entre com seus dados para continuar acessando nossos serviços</p>
+          <button class="btn-primary hidden" id="login" [routerLink]="['/login']">Entrar</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
