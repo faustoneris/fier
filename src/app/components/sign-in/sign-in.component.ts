@@ -1,22 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { SignUpComponent } from '../sign-up/sign-up.component';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule, ReactiveFormsModule],
+  imports: [FormsModule, CommonModule, RouterModule, ReactiveFormsModule, SignUpComponent],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
 export class SignInComponent {
-  isClient = true
+  isClient = true;
 
-  loginForm!: FormGroup
+  loginForm!: FormGroup;
+  registerForm!: FormGroup;
 
   constructor(private authService: AuthService, private fb: FormBuilder) {}
+  
+  @ViewChild('container', { static: true }) container!: ElementRef;
+  @ViewChild('registerBtn', { static: true }) registerBtn!: ElementRef;
+  @ViewChild('loginBtn', { static: true }) loginBtn!: ElementRef;
+
+  ngAfterViewInit() {
+    this.registerBtn.nativeElement.addEventListener('click', () => {
+      this.container.nativeElement.classList.add("active");
+    });
+
+    this.loginBtn.nativeElement.addEventListener('click', () => {
+      this.container.nativeElement.classList.remove("active");
+    });
+  }
 
   ngOnInit() {
     this.initForm()
@@ -32,9 +48,10 @@ export class SignInComponent {
     this.updateFormControls()
   }
 
-  setClient(value: boolean) {
-    this.isClient = value
-    this.updateFormControls()
+  setClient(event: Event) {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    this.isClient = (selectedValue === 'C' || selectedValue === '') ? true : false;
+    this.updateFormControls();
   }
 
   updateFormControls() {
@@ -64,9 +81,9 @@ export class SignInComponent {
     return this.loginForm.get('password')!
   }
 
-  onSubmit() {
+  onLogin() {
     if (this.loginForm.invalid) {
-      return
+      return;
     }
 
     let payload: any = {
@@ -84,5 +101,9 @@ export class SignInComponent {
     }
 
     this.authService.signIn(payload)
+  }
+
+  onCreate(){
+    console.log('cria');
   }
 }
