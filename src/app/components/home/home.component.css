@@ -20,7 +20,7 @@ main{
           gap: 4rem;
           align-items: center;
           text-align: center;
-          padding: 5rem 5rem 0;
+          padding: 0 5rem 5rem;
           color: #FFF;
 
           & h1{
@@ -94,6 +94,11 @@ main{
               & p{
                   font-size: 1.6rem;
                   font-weight: bold;
+                  cursor: pointer;
+
+                  &:hover{
+                    text-decoration: underline;
+                  }
               }
 
               & span{

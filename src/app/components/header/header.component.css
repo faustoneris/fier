@@ -122,18 +122,38 @@ header{
 
       & .search-bar{
           width: 100%;
-          height: 100%;
-          display: flex;
+          height: 50%;
+          display: grid;
+          grid-template-columns: 1fr 0.15fr;
           align-items: center;
           justify-content: center;
+          border: 1px solid black;
+          border-radius: 6rem;
+          overflow: hidden;
           
           & .txt-search{
               width: 90%;
-              height: 50%;
-              border: 1px solid #747279;
+              height: 100%;
+              border: none;
               background: none;
-              border-radius: 6rem;
               text-align: center;
+              margin: auto;
+
+              &:focus{
+                outline: none;
+              }
+          }
+
+          & .btn-search{
+            height: 100%;
+            font-size: 2rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+
+            &:hover{
+                transform: scale(1.01);
+            }
           }
       }
 
@@ -153,7 +173,13 @@ header{
 
               & i{
                   font-size: 2.6rem;
+                  
+                  &.ph-plus{
+                    margin-left: -10px;
+                    font-size: 1.5rem;
+                  }
               }
+
               
               &:hover{
                   scale: 1.1;

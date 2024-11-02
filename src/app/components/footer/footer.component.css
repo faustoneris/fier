@@ -4,71 +4,8 @@ footer{
     padding: 4rem 2.5rem;
     display: grid;
     gap: 5rem;
+    box-shadow: rgba(149, 157, 165, 0.5) 0px -14px 24px;
 
-    & .subscribe{
-        display: grid;
-        gap: 4rem;
-
-        & .grid-text{
-            color: #FFF;
-            display: grid;
-            gap: 2rem;
-
-            & h2{
-                font-size: 2rem;
-            }
-
-            & p{
-                font-size: 1.3rem;
-                text-align: justify;
-            }
-        }
-
-        & .wrap-subscribe{
-            display: grid;
-            gap: 2rem;
-            color: #FFF;
-
-            & h2{
-                font-size: 2rem;
-            }
-
-            & .form{
-                display: grid;
-                gap: 4rem;
-                font-size: 1.4rem;
-
-                & .form-email{
-                    display: grid;
-
-                    & input{
-                        background: none;
-                        border: none;
-                        border-bottom: 1px solid #FFF;
-                        height: 4rem;
-                        font-size: 1.4rem;
-                        color: #FFF;
-                        
-                        &:focus {
-                            outline: none;
-                        }
-                    }
-                }
-
-                & .form-checkbox{
-                    display: flex;
-                    gap: 1rem;
-                    align-items: center;
-                    cursor: pointer;
-
-                    & input{
-                        width: 1.5em;
-                        height: 1.5em;
-                    }
-                }
-            }
-        }
-    }
 
     & .business-information{
         display: grid;
@@ -246,14 +183,6 @@ footer{
 
     footer{
         gap: 8rem !important;
-
-        & .subscribe{
-            grid-template-columns: 1fr 1fr;
-
-            & .grid-text{
-                grid-template-rows: max-content 1fr;
-            }
-        }
 
         & .business-information{
             grid-template-columns: repeat(4, 1fr);

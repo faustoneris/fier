@@ -10,20 +10,23 @@
       </label>
 
       <ul class="list-elements show">
-          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >Mobile & Wearable Tech</a></li>
-          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >Drones & Cameras</a></li>
-          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >Headphones & Speakers</a></li>
-          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >Computers</a></li>
+          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >Dispositivos Móveis</a></li>
+          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >Drones</a></li>
+          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >Headphones</a></li>
+          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >Computadores</a></li>
           <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >Tablets</a></li>
-          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >TV & Home Cinema</a></li>
+          <li><a [routerLink]="['/list-products']" routerLinkActive="router-link-active" >TVs</a></li>
       </ul>
 
       <div class="search-bar">
           <input type="text" placeholder="Search..." class="txt-search" (input)="onSearchChange($event)">
+          <button id="btnSearch" class="btn-search"><i class="ph-thin ph-magnifying-glass"></i></button>
       </div>
 
       <div class="users-info">
           <a [routerLink]="['/update-user']"><i class="ph-thin ph-user-circle"></i></a>
+          <a [routerLink]="['/product-create']"><i class="ph-thin ph-shopping-cart-simple"></i><i class="ph ph-plus"></i></a>
+          <a [routerLink]="['/view-products-supplier']"><i class="ph-thin ph-list-plus"></i></a>
           <a [routerLink]="['/submitted-bids']"><i class="ph-thin ph-gavel"></i></a>
       </div>
   </nav>
