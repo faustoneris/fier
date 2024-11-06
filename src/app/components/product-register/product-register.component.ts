@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { SuppliersProductService } from '../../services/suppliers-product.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-product-register',
@@ -20,7 +21,8 @@ export class ProductRegisterComponent {
   constructor(
     private fb: FormBuilder,
     private suppliersProductService: SuppliersProductService,
-    private router: Router
+    private router: Router,
+    private jwtHelper: JwtHelperService
   ) {
     this.productForm = this.fb.group({
       productName: ['', Validators.required],
@@ -36,34 +38,40 @@ export class ProductRegisterComponent {
   onSubmit() {
     if (this.productForm.valid) {
       const formData = this.productForm.value
+      
+      const token = localStorage.getItem('token')
 
-      //TROCAR ESSE PAYLOAD PARA O NOVO QUE OS MLK AINDA TEM Q FAZER
-      const payload = {
-        name: formData.productName,
-        price: formData.productPriceMin, 
-        //priceMin: formData.productPriceMin, #ISSO VAI TER NO PAYLOAD NOVO
-        //priceMax: formData.productPriceMax, #ISSO VAI TER NO PAYLOAD NOVO
-        image: "~/images/",
-        category: formData.productCategory,
-        feedbacks: [],
-        specifications: {
-            model: null,
-            color: null,
-            description: formData.productDescription
+      if(token) {
+        const decodedToken = this.jwtHelper.decodeToken(token)
+        const document = decodedToken.document
+
+        const payload = {
+          name: formData.productName,
+          document: document,
+          price: formData.productPriceMin, 
+          image: "~/images/",
+          category: formData.productCategory,
+          feedbacks: [],
+          specifications: {
+              model: null,
+              color: null,
+              description: formData.productDescription
+          }
         }
+  
+        this.suppliersProductService.createProduct(payload).subscribe({
+          next: (response) => {
+            console.log('Produto cadastrado com sucesso:', response)
+            this.onClear()
+            this.router.navigate(['/view-products-supplier'])
+          },
+          error: (error) => {
+            console.error('Erro ao cadastrar o produto:', error)
+            alert('Erro ao cadastrar um produto!')
+          }
+        })
       }
-
-      this.suppliersProductService.createProduct(payload).subscribe({
-        next: (response) => {
-          console.log('Produto cadastrado com sucesso:', response)
-          this.onClear()
-          this.router.navigate(['/view-products-supplier'])
-        },
-        error: (error) => {
-          console.error('Erro ao cadastrar o produto:', error)
-          alert('Erro ao cadastrar um produto!')
-        }
-      })
+      
     } else {
       console.log('Formulário inválido!');
     }

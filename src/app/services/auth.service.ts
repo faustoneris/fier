@@ -8,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3001/authentication' //Mudar a URL para o BFF
+  private apiUrl = 'http://localhost:3000/api/authentication' //Mudar a URL para o BFF
   private token: any
 
   private jwtHelper = new JwtHelperService();

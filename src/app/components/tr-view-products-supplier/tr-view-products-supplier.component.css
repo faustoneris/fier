@@ -1,6 +1,6 @@
 .tr{
     display: grid;
-    grid-template-columns: 1fr 1fr .7fr .7fr .5fr .7fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 
     &.even-row{
         background-color: #DDD;

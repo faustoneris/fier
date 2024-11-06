@@ -4,11 +4,11 @@
 <section class="product-container">
     <div class="product-content">
         <div class="product-imgs">
-            <img src="assets/images/produto1.png" alt="Produto">
+            <img src="assets/images/produto2.png" alt="Produto">
         </div>
 
         <div class="product-details">
-            <h2 class="product-name">Round Mini Portable Bluetooth Speaker</h2>
+            <h2 class="product-name">{{ product?.name }}</h2>
 
             <div class="product-rating">
                 <span class="stars">
@@ -33,8 +33,8 @@
             </div>
 
             <div class="product-price">
-                <span class="max-price">Lance Máximo R$ 400,00</span>
-                <span class="min-price">Lance mínimo R$ 280,00</span>
+                <span class="max-price">Lance Máximo R$ {{ product?.price + 2000 }}</span> <!-- Arrumar isso aqui -->
+                <span class="min-price">Lance mínimo R$ {{ product?.price }}</span>
             </div>
 
             <form (ngSubmit)="onBid()">
@@ -73,10 +73,7 @@
             </div>
 
             <div class="toggle-details" [class.hide-toggle]="!showDetails">
-                Sou um detalhe do produto. Sou um ótimo lugar para adicionar mais informações
-                sobre o seu produto, como tamanho, material, cuidado e limpeza
-                instruções. Este também é um ótimo espaço para escrever o que torna isso
-                produto especial e como seus clientes podem se beneficiar deste item.
+                {{ product?.specifications.description }}
             </div>
         </div>
 

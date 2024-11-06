@@ -4,6 +4,8 @@ import { FooterComponent } from '../footer/footer.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-update-user',
@@ -18,7 +20,9 @@ export class UpdateUserComponent {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private jwtHelper: JwtHelperService,
+    private userService: UserService
   ) {
     this.userForm = this.fb.group({
       userCPF: ['', Validators.required],
@@ -31,7 +35,32 @@ export class UpdateUserComponent {
     })
   }
 
-  onSubmit() {
+  ngOnInit() {
+    const token = localStorage.getItem('token')
 
+    if (token && !this.jwtHelper.isTokenExpired(token)) {
+      const decodedToken = this.jwtHelper.decodeToken(token);
+
+      console.log(decodedToken)
+
+      const document = decodedToken.document
+
+      this.userService.getUserById(document).subscribe(user => {
+        this.userForm.setValue({
+          userCPF: user.document,
+          userName: user.name,
+          userPhone: user.phoneNumber,
+          userCellphone: user.phoneNumber,
+          userEmail: user.email,
+          userPwd: '',
+          userConfirmPwd: ''
+        })
+      })
+      
+    }
+  }
+
+  onSubmit() {
+    //put em users p atualizar os dados
   }
 }

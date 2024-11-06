@@ -37,9 +37,7 @@
             <div class="tr">
                 <div class="th">Nome Produto</div>
                 <div class="th">Categoria</div>
-                <div class="th">Lance Máximo</div>
-                <div class="th">Lance Mínimo</div>
-                <div class="th">Estoque</div>
+                <div class="th">Preço</div>
                 <div class="th">Ações</div>
             </div>
         </div>
@@ -49,6 +47,7 @@
                 *ngFor="let product of products; let i = index" 
                 [classRow]="i % 2 === 0 ? 'even-row' : 'odd-row'"
                 [product]="product"
+                (productDeleted)="onProductDeleted($event)"
             ></app-tr-view-products-supplier>
         </div>
     </div>

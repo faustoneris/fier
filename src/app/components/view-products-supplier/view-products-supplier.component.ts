@@ -1,8 +1,10 @@
+import { CustomersProductService } from './../../services/customers-product.service';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { TrViewProductsSupplierComponent } from '../tr-view-products-supplier/tr-view-products-supplier.component';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-view-products-supplier',
@@ -12,42 +14,26 @@ import { TrViewProductsSupplierComponent } from '../tr-view-products-supplier/tr
   styleUrl: './view-products-supplier.component.css'
 })
 export class ViewProductsSupplierComponent implements OnInit{
+  constructor(private customersProductService: CustomersProductService, private jwtHelper: JwtHelperService) {}
+
   products: any[] = [];
 
   ngOnInit() {
-    this.products = [
-      {
-        id: 312,
-        name: 'iPhone 15 Pro Max',
-        category: 'Mobile & Wearable Tech',
-        priceMax: 10000.00,
-        priceMin: 9500.00,
-        stock: 23
-      },
-      {
-        id: 342,
-        name: 'Samsung Galaxy S23 Ultra',
-        category: 'Mobile & Wearable Tech',
-        priceMax: 8500.00,
-        priceMin: 8000.00,
-        stock: 15
-      },
-      {
-        id: 675,
-        name: 'DJI Mavic Air 2',
-        category: 'Drones & Cameras',
-        priceMax: 5000.00,
-        priceMin: 4700.00,
-        stock: 12
-      },
-      {
-        id: 896,
-        name: 'Sony WH-1000XM4',
-        category: 'Headphones & Speakers',
-        priceMax: 1500.00,
-        priceMin: 1300.00,
-        stock: 8
+    this.customersProductService.getAllCustomersProducts().subscribe(products => {
+      const token = localStorage.getItem('token')
+
+      if (token && !this.jwtHelper.isTokenExpired(token)) {
+        const decodedToken = this.jwtHelper.decodeToken(token);
+        const document = decodedToken.document
+
+        const filteredProducts = products.filter(product => product.document === document)
+
+        this.products = filteredProducts
       }
-    ];
+    })
+  }
+
+  onProductDeleted(productId: number): void {
+    this.products = this.products.filter(product => product.id !== productId);
   }
 }
