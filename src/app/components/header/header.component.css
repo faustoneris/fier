@@ -31,6 +31,16 @@ header{
           }
       }
 
+      & .img-logo{
+        width: 10rem;
+        transition: .5s ease;
+
+        &:hover{
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+      }
+
       & .chk-hamburguer {
           display: none;
       
