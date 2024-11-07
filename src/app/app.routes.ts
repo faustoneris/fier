@@ -11,6 +11,7 @@ import { ViewProductsSupplierComponent } from './components/view-products-suppli
 import { SupplierReceivedBidsComponent } from './components/supplier-received-bids/supplier-received-bids.component';
 import { CustomerSubmittedBidsComponent } from './components/customer-submitted-bids/customer-submitted-bids.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { UpdateProductComponent } from './components/update-product/update-product.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [  authorizationGuard  ] },
@@ -23,5 +24,6 @@ export const routes: Routes = [
   { path: 'received-bids', component: SupplierReceivedBidsComponent, canActivate: [ authorizationGuard ] }, //Ajustar para somente supplier ver
   { path: 'submitted-bids', component: CustomerSubmittedBidsComponent, canActivate: [ authorizationGuard ] }, //Ajustar para somente usuário ver
   { path: 'update-user', component: UpdateUserComponent, canActivate: [ authorizationGuard ] }, //Ajustar para somente usuário ver
+  { path: 'update-product', component: UpdateProductComponent, canActivate: [ authorizationGuard ] }, //Ajustar para somente usuário ver
   { path: '**', redirectTo: '', pathMatch: 'full' }, //TEM QUE SER A ULTIMA ROTA
 ];

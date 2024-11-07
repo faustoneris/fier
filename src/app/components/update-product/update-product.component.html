@@ -1,0 +1,77 @@
+<app-header></app-header>
+
+<section class="container-update-user">
+    <h1>Editar Produto</h1>
+
+    <form [formGroup]="productForm" (ngSubmit)="onUpdate()" #formDir="ngForm">
+        <div class="content-field">
+            <div class="row row-group-1">
+                <label class="box-item">
+                    <p class="title-item">Nome do Produto</p>
+                    <input type="text" id="productName" formControlName="productName" class="form-field">
+                    <div *ngIf="productName.invalid && formDir.submitted" class="validation-error">
+                        <p *ngIf="productName.errors?.['required']" >Esse campo é obrigatório!</p>
+                    </div>
+                </label>
+                
+                <label class="box-item">
+                    <p class="title-item">Preço Mínimo</p>
+                    <input type="text" id="productPriceMin" formControlName="productPriceMin" class="form-field">
+                    <div *ngIf="productPriceMin.invalid && formDir.submitted" class="validation-error">
+                        <p *ngIf="productPriceMin.errors?.['required']" >Esse campo é obrigatório!</p>
+                    </div>
+                </label>
+
+                <label class="box-item">
+                    <p class="title-item">Preço Máximo</p>
+                    <input type="text" id="productPriceMax" formControlName="productPriceMax" class="form-field">
+                    <div *ngIf="productPriceMax.invalid && formDir.submitted" class="validation-error">
+                        <p *ngIf="productPriceMax.errors?.['required']" >Esse campo é obrigatório!</p>
+                    </div>
+                </label>
+                
+                <label class="box-item">
+                    <p class="title-item">Categoria</p>
+                    <select id="productCategory" formControlName="productCategory" class="form-field">
+                        <option value="">Selecione uma opção...</option>
+                        <option value="Mobile & Wearable Tech">Dispositivos Móveis</option>
+                        <option value="Drones & Cameras">Drones</option>
+                        <option value="Headphones & Speakers">Headphones</option>
+                        <option value="Computers Tablets">Computadores</option>
+                        <option value="TV & Home Cinema">TVs</option>
+                    </select>
+                    <div *ngIf="productCategory.invalid && formDir.submitted" class="validation-error">
+                        <p *ngIf="productCategory.errors?.['required']" >Esse campo é obrigatório!</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="row row-group-2">
+                <label class="box-item">
+                    <p class="title-item">Descrição</p>
+                    <textarea id="productDescription" formControlName="productDescription" class="form-field textarea-input"></textarea>
+                    <div *ngIf="productDescription.invalid && formDir.submitted" class="validation-error">
+                        <p *ngIf="productDescription.errors?.['required']" >Esse campo é obrigatório!</p>
+                    </div>
+                </label>
+            </div>
+            
+            <div class="row row-group-3">
+                <label class="box-item">
+                    <p class="title-item">Especificações</p>
+                    <textarea id="productSpecification" formControlName="productSpecification" class="form-field textarea-input"></textarea>
+                    <div *ngIf="productSpecification.invalid && formDir.submitted" class="validation-error">
+                        <p *ngIf="productSpecification.errors?.['required']" >Esse campo é obrigatório!</p>
+                    </div>
+                </label>
+            </div>
+            
+            <div class="row row-group-4">
+                <button class="buttons">Atualizar</button>
+            </div>
+
+        </div>
+    </form>
+</section>
+
+<app-footer></app-footer>

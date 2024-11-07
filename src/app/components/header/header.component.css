@@ -114,7 +114,8 @@ header{
               text-decoration: none;
               
               &:hover{
-                  color: rgba(20,20,20,.8)
+                  color: rgba(20,20,20,.8);
+                  text-decoration: underline;
               }
           }
           
