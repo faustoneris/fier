@@ -41,11 +41,9 @@ export class UpdateUserComponent {
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       const decodedToken = this.jwtHelper.decodeToken(token);
 
-      console.log(decodedToken)
-
       const document = decodedToken.document
 
-      this.userService.getUserById(document).subscribe(user => {
+      this.userService.getUserByDocument(document).subscribe(user => {
         this.userForm.setValue({
           userCPF: user.document,
           userName: user.name,
@@ -56,7 +54,7 @@ export class UpdateUserComponent {
           userConfirmPwd: ''
         })
       })
-      
+
     }
   }
 

@@ -15,7 +15,7 @@ export class UserService {
     return this.http.post<UserResponse>(this.url, user)
   }
 
-  getUserById(userId: any): Observable<any> {
-    return this.http.get<any>(`${this.url}/document/${userId}`)
+  getUserByDocument(document: any): Observable<any> {
+    return this.http.get<any>(`${this.url}/document/${document}`)
   }
 }

@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router'
+
 import * as jwt_decode from 'jwt-decode';
 import { JwtHelperService } from '@auth0/angular-jwt';
+
+import { LoaderService } from '../components/fier-spinner/loader.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +16,11 @@ export class AuthService {
 
   private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private loading: LoaderService) {
   }
 
   signIn(payload: any) {
+    this.loading.setLoading(true);
     return this.http.post<any>(`${this.apiUrl}`, payload)
       .subscribe(response => {
         if (response) {
@@ -26,8 +30,10 @@ export class AuthService {
             localStorage.setItem('token', token)
             this.router.navigate(['/']);
           }
+        this.loading.setLoading(false);
         }
       }, err => {
+        this.loading.setLoading(false);
         alert(`Ocorreu um erro ao autenticar usuário: ${err.error.message}`)
       })
   }
@@ -66,5 +72,9 @@ export class AuthService {
 
   getToken(): string | null {
     return this.token || localStorage.getItem('token');
+  }
+
+  get userSession(): any {
+    return this.jwtHelper.decodeToken(this.getToken()!);
   }
 }

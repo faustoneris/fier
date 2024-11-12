@@ -33,8 +33,7 @@
             </div>
 
             <div class="product-price">
-                <span class="max-price">Lance Máximo R$ {{ product?.price + 2000 }}</span> <!-- Arrumar isso aqui -->
-                <span class="min-price">Lance mínimo R$ {{ product?.price }}</span>
+                <span class="min-price">Lance mínimo R$ {{ product?.minAuctionPrice | currency }}</span>
             </div>
 
             <form (ngSubmit)="onBid()">
@@ -56,7 +55,7 @@
                     </div>
                 </div>
 
-                <div class="bid-sent" [class.hide]="!bidMade">
+                <div class="bid-sent" [class.hide]="hasBid">
                     <p class="p-bid-sent">Seu lance para esse produto já foi realizado e registrado com sucesso.</p>
                     <p class="p-bid-sent">Por favor, aguarde enquanto o fornecedor analisa a sua oferta.</p>
                     <p class="p-bid-sent">Você deverá receber uma resposta em até 24h.</p>

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { TrSupplierReceivedBidsComponent } from '../tr-supplier-received-bids/tr-supplier-received-bids.component';
+import { SpinnerComponent } from '../fier-spinner/spinner.component';
 
 @Component({
   selector: 'app-supplier-received-bids',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, CommonModule, TrSupplierReceivedBidsComponent],
+  imports: [HeaderComponent, FooterComponent, CommonModule, SpinnerComponent, TrSupplierReceivedBidsComponent],
   templateUrl: './supplier-received-bids.component.html',
   styleUrl: './supplier-received-bids.component.css'
 })

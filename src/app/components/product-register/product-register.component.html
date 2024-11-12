@@ -14,18 +14,18 @@
       </label>
 
       <label class="box box-price-min-product">
-        <p class="title-item">Preço Mínimo</p>
-        <input type="number" id="productPriceMin" formControlName="productPriceMin" class="form-field">
-        <div *ngIf="productPriceMin.invalid && formDir.submitted" class="validation-error">
-          <p *ngIf="productPriceMin.errors?.['required']" >Esse campo é obrigatório!</p>
+        <p class="title-item">Preço</p>
+        <input type="number" id="price" formControlName="price" class="form-field">
+        <div *ngIf="price.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="price.errors?.['required']" >Esse campo é obrigatório!</p>
         </div>
       </label>
 
       <label class="box box-price-max-product">
-        <p class="title-item">Preço Máximo</p>
-        <input type="number" id="productPriceMax" formControlName="productPriceMax" class="form-field">
-        <div *ngIf="productPriceMax.invalid && formDir.submitted" class="validation-error">
-          <p *ngIf="productPriceMax.errors?.['required']" >Esse campo é obrigatório!</p>
+        <p class="title-item">Lance inicial</p>
+        <input type="number" id="minAuctionPrice" formControlName="minAuctionPrice" class="form-field">
+        <div *ngIf="minAuctionPrice.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="minAuctionPrice.errors?.['required']" >Esse campo é obrigatório!</p>
         </div>
       </label>
 
@@ -64,7 +64,7 @@
         <p class="title-item">Imagens do Produto</p>
         <input type="file" id="productImages" (change)="onFileSelected($event)" multiple>
       </label>
-      
+
       <div class="wrap-btns-actions">
         <button type="button" class="btn-action clear" (click)="onClear()">Limpar <i class="ph-thin ph-x-circle"></i></button>
         <button type="submit" class="btn-action save" >Salvar <i class="ph-thin ph-check-circle"></i></button>

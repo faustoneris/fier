@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+
 import { AuthService } from '../../services/auth.service';
+import { SpinnerComponent } from '../fier-spinner/spinner.component'
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule, ReactiveFormsModule],
+  imports: [FormsModule, CommonModule, RouterModule, ReactiveFormsModule, SpinnerComponent],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
@@ -16,7 +18,10 @@ export class SignInComponent {
 
   loginForm!: FormGroup;
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {}
+  constructor(
+      private authService: AuthService,
+      private fb: FormBuilder
+    ) {}
 
   ngOnInit() {
     this.initForm();

@@ -26,8 +26,8 @@ export class ProductRegisterComponent {
   ) {
     this.productForm = this.fb.group({
       productName: ['', Validators.required],
-      productPriceMin: ['', Validators.required],
-      productPriceMax: ['', Validators.required],
+      price: ['', Validators.required],
+      minAuctionPrice: ['', Validators.required],
       productCategory: ['', Validators.required],
       productDescription: ['', Validators.required],
       productSpecification: ['', Validators.required],
@@ -38,7 +38,7 @@ export class ProductRegisterComponent {
   onSubmit() {
     if (this.productForm.valid) {
       const formData = this.productForm.value
-      
+
       const token = localStorage.getItem('token')
 
       if(token) {
@@ -48,7 +48,8 @@ export class ProductRegisterComponent {
         const payload = {
           name: formData.productName,
           document: document,
-          price: formData.productPriceMin, 
+          price: formData.price,
+          minAuctionPrice: formData.minAuctionPrice,
           image: "~/images/",
           category: formData.productCategory,
           feedbacks: [],
@@ -58,7 +59,7 @@ export class ProductRegisterComponent {
               description: formData.productDescription
           }
         }
-  
+
         this.suppliersProductService.createProduct(payload).subscribe({
           next: (response) => {
             console.log('Produto cadastrado com sucesso:', response)
@@ -71,7 +72,7 @@ export class ProductRegisterComponent {
           }
         })
       }
-      
+
     } else {
       console.log('Formulário inválido!');
     }
@@ -92,8 +93,12 @@ export class ProductRegisterComponent {
     return this.productForm.get('productName')!
   }
 
-  get productPriceMin() {
-    return this.productForm.get('productPriceMin')!
+  get price() {
+    return this.productForm.get('price')!
+  }
+
+  get minAuctionPrice() {
+    return this.productForm.get('minAuctionPrice')!
   }
 
   get productPriceMax() {
@@ -103,7 +108,7 @@ export class ProductRegisterComponent {
   get productCategory() {
     return this.productForm.get('productCategory')!
   }
-  
+
   get productDescription() {
     return this.productForm.get('productDescription')!
   }

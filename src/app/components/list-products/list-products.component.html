@@ -1,7 +1,9 @@
+<app-spinner></app-spinner>
+
 <app-header (searchChanged)="onSearchChange($event)" ></app-header>
  <section class="search-products-container">
   <h2>Todos os produtos</h2>
-  
+
   <div class="search-content">
       <div class="filter-container">
           <div class="wrap-filter">
@@ -17,7 +19,7 @@
 
           <div class="wrap-filter">
               <h3>Tipo de Produto</h3>
-              
+
               <div class="list-items">
                   <label>
                       <input type="checkbox" (change)="onCheckboxChange($event, 'Mobile & Wearable Tech')">
@@ -28,12 +30,12 @@
                       <input type="checkbox" (change)="onCheckboxChange($event, 'Drones & Cameras')">
                       <span>Drones</span>
                   </label>
-                  
+
                   <label>
                       <input type="checkbox" (change)="onCheckboxChange($event, 'Headphones & Speakers')">
                       <span>Headphones</span>
                   </label>
-                  
+
                   <label>
                       <input type="checkbox" (change)="onCheckboxChange($event, 'Computers Tablets')" >
                       <span>Computadores</span>

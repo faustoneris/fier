@@ -1,5 +1,5 @@
 <app-header></app-header>
-
+<app-spinner></app-spinner>
 <section class="container-received-bids">
     <h1>Lances Recebidos</h1>
 
@@ -57,9 +57,9 @@
                 </td>
             </tr>
             --->
-            
+
             <app-tr-supplier-received-bids
-                *ngFor="let bid of bids; let i = index" 
+                *ngFor="let bid of bids; let i = index"
                 [classRow]="i % 2 === 0 ? 'even-row' : 'odd-row'"
                 [bid]="bid"
             ></app-tr-supplier-received-bids>
