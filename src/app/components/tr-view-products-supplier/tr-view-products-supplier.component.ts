@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SuppliersProductService } from '../../services/suppliers-product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tr-view-products-supplier',
@@ -10,7 +11,7 @@ import { SuppliersProductService } from '../../services/suppliers-product.servic
   styleUrl: './tr-view-products-supplier.component.css'
 })
 export class TrViewProductsSupplierComponent {
-  constructor(private suppliersProductService: SuppliersProductService) {}
+  constructor(private suppliersProductService: SuppliersProductService, private router: Router) {}
 
   @Input() product: any;
   @Input() classRow!: string;
@@ -34,12 +35,7 @@ export class TrViewProductsSupplierComponent {
 
   onEdit(productId: any): void {
     console.log('Editar produto - ID: ', productId)
-    /* this.suppliersProductService.editProduct(productId).subscribe({
-      next: () => {
-        alert('Produto editado com sucesso')
-        console.log('Produto editado com sucesso')
-      }
-    }) */
+    this.router.navigate(['/update-product', productId])
   }
 
   //@Input() name!: string;

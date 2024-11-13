@@ -63,6 +63,14 @@ export class AuthService {
     return decodedToken.loginType;
   }
 
+  getDocument() {
+    const token = localStorage.getItem('token');
+    if (!token || this.jwtHelper.isTokenExpired(token)) return null;
+
+    const decodedToken = this.jwtHelper.decodeToken(token);
+    return decodedToken.document;
+  }
+
   logout() {
     if (typeof window !== 'undefined' && localStorage) {
       localStorage.removeItem('token');

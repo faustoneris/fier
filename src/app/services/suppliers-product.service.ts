@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 export class SuppliersProductService {
   private url = 'http://localhost:3001/supplier/product'
 
+  private baseUrl = 'http://localhost:8080/supplier/product'
+
   constructor(private http: HttpClient) { }
 
   getSupplierProduct(productId: any): Observable<any> {
@@ -22,7 +24,7 @@ export class SuppliersProductService {
     return this.http.delete<any>(`${this.url}/${productId}`);
   }
 
- /*  editProduct(productId: any): Observable<any> {
-    return this.http.put<any>(`${this.url}`)
-  } */
+  editProduct(productId: any, newProduct: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/${productId}`, newProduct) //trocar p bff
+  }
 }
