@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  
+
   constructor(private authService: AuthService, private router: Router) {}
 
   @Output() searchChanged = new EventEmitter<string>()
@@ -33,4 +33,8 @@ export class HeaderComponent {
     }
   }
 
-}
+  onLogout(): void {
+    this.authService.logout()
+  }
+
+} 

@@ -25,7 +25,13 @@
       </div>
 
       <div class="users-info">
-          <a [routerLink]="['/update-user']"><i class="ph-thin ph-user-circle"></i></a>
+          <div class="user-dropdown">
+              <a><i class="ph-thin ph-user-circle"></i></a>
+              <div class="dropdown-menu">
+                  <a [routerLink]="['/update-user']">Meus dados</a>
+                  <a (click)="onLogout()" >Sair</a>
+              </div>
+          </div>      
           <a [routerLink]="['/product-create']"><i class="ph-thin ph-shopping-cart-simple"></i><i class="ph ph-plus"></i></a>
           <a [routerLink]="['/view-products-supplier']"><i class="ph-thin ph-list-plus"></i></a>
           <a (click)="redirectBasedOnLoginType()"><i class="ph-thin ph-gavel"></i></a>
