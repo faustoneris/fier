@@ -12,6 +12,7 @@ import { SupplierReceivedBidsComponent } from './components/supplier-received-bi
 import { CustomerSubmittedBidsComponent } from './components/customer-submitted-bids/customer-submitted-bids.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
+import { roleGuard } from './_guard/role.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [  authorizationGuard  ] },
@@ -21,9 +22,9 @@ export const routes: Routes = [
   { path: 'list-products', component: ListProductsComponent, canActivate: [ authorizationGuard ] },
   { path: 'product-create', component: ProductRegisterComponent, canActivate: [ authorizationGuard ] }, //Ja esta para só supplier na auth
   { path: 'view-products-supplier', component: ViewProductsSupplierComponent, canActivate: [ authorizationGuard ] }, //Ajustar para somente supplier ver
-  { path: 'received-bids', component: SupplierReceivedBidsComponent, canActivate: [ authorizationGuard ] }, //Ajustar para somente supplier ver
-  { path: 'submitted-bids', component: CustomerSubmittedBidsComponent, canActivate: [ authorizationGuard ] }, //Ajustar para somente usuário ver
+  { path: 'received-bids', component: SupplierReceivedBidsComponent, canActivate: [ authorizationGuard, roleGuard ] }, 
+  { path: 'submitted-bids', component: CustomerSubmittedBidsComponent, canActivate: [ authorizationGuard, roleGuard ] }, 
   { path: 'update-user', component: UpdateUserComponent, canActivate: [ authorizationGuard ] }, //Ajustar para somente usuário ver
-  { path: 'update-product', component: UpdateProductComponent, canActivate: [ authorizationGuard ] }, //Ajustar para somente usuário ver
+  { path: 'update-product/:id', component: UpdateProductComponent, canActivate: [ authorizationGuard ] }, //Ajustar para somente usuário ver
   { path: '**', redirectTo: '', pathMatch: 'full' }, //TEM QUE SER A ULTIMA ROTA
 ];

@@ -28,7 +28,7 @@
           <a [routerLink]="['/update-user']"><i class="ph-thin ph-user-circle"></i></a>
           <a [routerLink]="['/product-create']"><i class="ph-thin ph-shopping-cart-simple"></i><i class="ph ph-plus"></i></a>
           <a [routerLink]="['/view-products-supplier']"><i class="ph-thin ph-list-plus"></i></a>
-          <a [routerLink]="['/submitted-bids']"><i class="ph-thin ph-gavel"></i></a>
+          <a (click)="redirectBasedOnLoginType()"><i class="ph-thin ph-gavel"></i></a>
       </div>
   </nav>
 </header>

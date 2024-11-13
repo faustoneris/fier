@@ -3,7 +3,7 @@
   <div class="td product-category">{{ product.category }}</div>
   <div class="td product-price-max">{{ product.price | currency:'BRL' }}</div>
   <div class="td product-actions">
-    <button><i class="ph ph-pencil"></i></button>
+    <button (click)="onEdit(product.id)"><i class="ph ph-pencil"></i></button>
     <button (click)="onDelete(product.id)" ><i class="ph ph-trash"></i></button>
   </div>
 </div>

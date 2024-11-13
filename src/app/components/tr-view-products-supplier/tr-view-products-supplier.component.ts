@@ -32,6 +32,16 @@ export class TrViewProductsSupplierComponent {
     }
   }
 
+  onEdit(productId: any): void {
+    console.log('Editar produto - ID: ', productId)
+    /* this.suppliersProductService.editProduct(productId).subscribe({
+      next: () => {
+        alert('Produto editado com sucesso')
+        console.log('Produto editado com sucesso')
+      }
+    }) */
+  }
+
   //@Input() name!: string;
   //@Input() category!: string;
   //@Input() priceMax!: number;

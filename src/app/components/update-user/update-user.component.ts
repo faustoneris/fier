@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-update-user',
@@ -22,7 +23,8 @@ export class UpdateUserComponent {
     private fb: FormBuilder,
     private router: Router,
     private jwtHelper: JwtHelperService,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService
   ) {
     this.userForm = this.fb.group({
       userCPF: ['', Validators.required],
@@ -59,6 +61,36 @@ export class UpdateUserComponent {
   }
 
   onSubmit() {
-    //put em users p atualizar os dados
+    const token = localStorage.getItem('token')
+
+    if (token && !this.jwtHelper.isTokenExpired(token)) {
+      const decodedToken = this.jwtHelper.decodeToken(token);
+
+      const document = decodedToken.document
+
+      const form = this.userForm.value
+
+      this.userService.getUserByDocument(document).subscribe(user => {
+        const userId = user._id
+
+        const payload = {
+          name: form.userName,
+          email: form.userEmail,
+          document: form.userCPF,
+          phoneNumber: form.userPhone,
+          password: form.userPwd,
+          loginType: this.authService.getRole()
+        }
+
+        this.userService.updateUser(userId, payload).subscribe(res => {
+          alert('Informações atualizadas!')
+          console.log('Usuario atualiazado -', res)
+        }, err => {
+          alert('Erro!')
+          console.error('Erro -', err)
+        })
+      })
+
+    }
   }
 }

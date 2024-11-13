@@ -22,8 +22,8 @@ export class UpdateProductComponent {
   ) {
     this.productForm = this.fb.group({
       productName: ['', Validators.required],
-      productPriceMin: ['', Validators.required],
-      productPriceMax: ['', Validators.required],
+      productPrice: ['', Validators.required],
+      productInitialBid: ['', Validators.required],
       productCategory: ['', Validators.required],
       productDescription: ['', Validators.required],
       productSpecification: ['', Validators.required],
@@ -39,12 +39,12 @@ export class UpdateProductComponent {
     return this.productForm.get('productName')!
   }
 
-  get productPriceMin() {
-    return this.productForm.get('productPriceMin')!
+  get productPrice() {
+    return this.productForm.get('productPrice')!
   }
 
-  get productPriceMax() {
-    return this.productForm.get('productPriceMax')!
+  get productInitialBid() {
+    return this.productForm.get('productInitialBid')!
   }
 
   get productCategory() {

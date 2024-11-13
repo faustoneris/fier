@@ -18,4 +18,8 @@ export class UserService {
   getUserByDocument(document: any): Observable<any> {
     return this.http.get<any>(`${this.url}/document/${document}`)
   }
+
+  updateUser(id: any, newInfos: any): Observable<any> {
+    return this.http.put(`${this.url}/${id}`, newInfos)
+  }
 }

@@ -15,18 +15,18 @@
                 </label>
                 
                 <label class="box-item">
-                    <p class="title-item">Preço Mínimo</p>
-                    <input type="text" id="productPriceMin" formControlName="productPriceMin" class="form-field">
-                    <div *ngIf="productPriceMin.invalid && formDir.submitted" class="validation-error">
-                        <p *ngIf="productPriceMin.errors?.['required']" >Esse campo é obrigatório!</p>
+                    <p class="title-item">Preço</p>
+                    <input type="text" id="productPrice" formControlName="productPrice" class="form-field">
+                    <div *ngIf="productPrice.invalid && formDir.submitted" class="validation-error">
+                        <p *ngIf="productPrice.errors?.['required']" >Esse campo é obrigatório!</p>
                     </div>
                 </label>
 
                 <label class="box-item">
-                    <p class="title-item">Preço Máximo</p>
-                    <input type="text" id="productPriceMax" formControlName="productPriceMax" class="form-field">
-                    <div *ngIf="productPriceMax.invalid && formDir.submitted" class="validation-error">
-                        <p *ngIf="productPriceMax.errors?.['required']" >Esse campo é obrigatório!</p>
+                    <p class="title-item">Lance inicial</p>
+                    <input type="text" id="productInitialBid" formControlName="productInitialBid" class="form-field">
+                    <div *ngIf="productInitialBid.invalid && formDir.submitted" class="validation-error">
+                        <p *ngIf="productInitialBid.errors?.['required']" >Esse campo é obrigatório!</p>
                     </div>
                 </label>
                 
