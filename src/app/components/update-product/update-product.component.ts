@@ -4,7 +4,7 @@ import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomersProductService } from '../../services/customers-product.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -27,7 +27,8 @@ export class UpdateProductComponent {
     private route: ActivatedRoute,
     private customersProductService: CustomersProductService,
     private suppliersProductService: SuppliersProductService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.productForm = this.fb.group({
       productName: ['', Validators.required],
@@ -89,8 +90,8 @@ export class UpdateProductComponent {
 
     this.suppliersProductService.editProduct(this.productId, payload).subscribe({
       next: (data) => {
-        console.log(data)
         alert('Produto atualizado com sucesso')
+        this.router.navigate(['/view-products-supplier'])
       },
       error: (err) => {
         console.error(err)
