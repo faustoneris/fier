@@ -8,7 +8,7 @@ export const authorizationGuard: CanActivateFn = (route, state) => {
 
   if (authService.isLoggedIn()) {
     const role = authService.getRole()
-    const restrictedRoutes = ['product-create', 'view-products-supplier', 'received-bids']
+    const restrictedRoutes = ['product-create', 'view-products-supplier', 'received-bids', 'update-product', 'update-product/:id']
 
     if (role === 'CUSTOMER' && restrictedRoutes.includes(route.routeConfig?.path || '')) {
       router.navigate(['/'])
