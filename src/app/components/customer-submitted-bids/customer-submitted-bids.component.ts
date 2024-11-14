@@ -24,22 +24,7 @@ export class CustomerSubmittedBidsComponent implements OnInit {
         status: 'Aguardando Resposta'
       },
       {
-        product: 'iPhone 15 Pro Max',
-        price: 10000.00,
-        date: '24/04/2002',
-        status: 'Aguardando Resposta'
-      },
-      {
-        product: 'iPhone 15 Pro Max',
-        price: 10000.00,
-        date: '24/04/2002',
-        status: 'Aguardando Resposta'
-      },
-      {
-        product: 'iPhone 15 Pro Max',
-        price: 10000.00,
-        date: '24/04/2002',
-        status: 'Aguardando Resposta'
+        
       }
     ];
   }
