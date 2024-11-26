@@ -24,4 +24,8 @@ export class AuctionService {
     fetchAuctionBySupplierDocument(document: string): Observable<any[]> {
         return this.http.get<any[]>(`${this.url}/supplier/${document}`);
     }
+
+    fetchAuctionByCustomerDocument(document: string): Observable<any[]> {
+        return this.http.get<any[]>(`${this.url}/customer/${document}`)
+    }
 }

@@ -76,6 +76,8 @@ export class ListProductsComponent {
         }
         this.loaderService.setLoading(false);
         this.filterProducts()
+      }, err => {
+        this.loaderService.setLoading(false);
       })
     } else {
       this.loaderService.setLoading(true);
@@ -87,8 +89,11 @@ export class ListProductsComponent {
         }
         this.loaderService.setLoading(false);
         this.filterProducts()
+      }, err => {
+        this.loaderService.setLoading(false);
       });
     }
+    this.loaderService.setLoading(false);
   }
 
   onCheckboxChange(event: any, category: string): void {

@@ -1,4 +1,5 @@
 <app-header></app-header>
+<app-spinner></app-spinner>
 
 <!--- SECTION 2 - PRODUCT --->
 <section class="product-container">
@@ -36,7 +37,7 @@
                 <span class="min-price">Lance mínimo R$ {{ product?.minAuctionPrice | currency }}</span>
             </div>
 
-            <form (ngSubmit)="onBid()">
+            <form>
                 <div class="wrap-actions-bid" [class.hide]="bidMade">
                     <div class="product-inputs">
                         <label class="wrap-input">
@@ -72,7 +73,7 @@
             </div>
 
             <div class="toggle-details" [class.hide-toggle]="!showDetails">
-                {{ product?.specifications.description }}
+                {{ product?.specifications?.description }}
             </div>
         </div>
 

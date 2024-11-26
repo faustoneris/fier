@@ -7,13 +7,13 @@
         <source media="(max-width: 767px)" srcset="assets/images/home-cel_1.png">
         <img src="assets/images/home-desk.png" alt="Descrição da imagem">
     </picture>
-  
+
     <div class="infos-home">
         <h1>Compre a melhor marca eletrônica</h1>
         <p>Obtenha mais pelo seu dinheiro em cada compra!</p>
-        <button class="btn btn-primary">Compre agora</button>
+        <!-- <button class="btn btn-primary">Compre agora</button> -->
     </div>
-  
+
     <div class="animated-div">
         <span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span>
         <span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span>
@@ -23,53 +23,53 @@
         <span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span><span>Promoção!</span>
     </div>
   </section>
-  
+
   <!--- SECTION NEW PRODUCTS --->
   <section class="new-products">
     <h1 class="title">Novos Produtos</h1>
-  
+
     <div class="list-new-products">
         <div class="wrap-product">
             <div class="product-img">
                 <img src="assets/images/produto1.png" alt="Imagem de uma caixinha de bluetooth">
             </div>
-  
+
             <div class="product-info">
                 <p [routerLink]="['/product/:id']">Round Mini Portable Bluetooth Speaker</p>
                 <span>R$ 1.850,00</span>
                 <span class="rating"><i class="ph-fill ph-star"></i> 4.1 (100)</span>
             </div>
         </div>
-  
+
         <div class="wrap-product">
             <div class="product-img">
                 <img src="assets/images/produto2.png" alt="Imagem de uma caixinha de bluetooth">
             </div>
-  
+
             <div class="product-info">
                 <p [routerLink]="['/product/:id']">OVE Light Space 5G, 128GB</p>
                 <span>R$ 1.850,00</span>
                 <span class="rating"><i class="ph-fill ph-star"></i> 4.1 (100)</span>
             </div>
         </div>
-  
+
         <div class="wrap-product">
             <div class="product-img">
                 <img src="assets/images/produto3.png" alt="Imagem de uma caixinha de bluetooth">
             </div>
-  
+
             <div class="product-info">
                 <p [routerLink]="['/product/:id']">Round Mini Portable Bluetooth Speaker</p>
                 <span>R$ 1.850,00</span>
                 <span class="rating"><i class="ph-fill ph-star"></i> 4.1 (100)</span>
             </div>
         </div>
-  
+
         <div class="wrap-product">
             <div class="product-img">
                 <img src="assets/images/produto4.png" alt="Imagem de uma caixinha de bluetooth">
             </div>
-  
+
             <div class="product-info">
                 <p [routerLink]="['/product/:id']">Round Mini Portable Bluetooth Speaker</p>
                 <span>R$ 1.850,00</span>
@@ -78,60 +78,60 @@
         </div>
     </div>
   </section>
-  
+
   <!--- PRODUCTS CATEGORIES --->
   <section class="product-categories">
     <h1 class="title">Por Categoria</h1>
-  
+
     <div class="list-categories">
         <div class="category">
             <img src="assets/images/celular.png" alt="Imagem de um celular">
-  
+
             <div class="infos-category">
                 <h3>Dispositivos Móveis</h3>
                 <button class="btn btn-primary" [routerLink]="['/list-products']">Compre agora</button>
             </div>
         </div>
-  
+
         <div class="category">
             <img src="assets/images/camera.png" alt="Imagem de um celular">
-  
+
             <div class="infos-category">
                 <h3>Drones</h3>
                 <button class="btn btn-primary" [routerLink]="['/list-products']">Compre agora</button>
             </div>
         </div>
-  
+
         <div class="category">
             <img src="assets/images/fone.png" alt="Imagem de um celular">
-  
+
             <div class="infos-category">
                 <h3>Headphones</h3>
                 <button class="btn btn-primary" [routerLink]="['/list-products']">Compre agora</button>
             </div>
         </div>
-  
+
         <div class="category">
             <img src="assets/images/notebook.png" alt="Imagem de um celular">
-  
+
             <div class="infos-category">
                 <h3>Computadores</h3>
                 <button class="btn btn-primary" [routerLink]="['/list-products']">Compre agora</button>
             </div>
         </div>
-  
+
         <div class="category">
             <img src="assets/images/tablet.png" alt="Imagem de um celular">
-  
+
             <div class="infos-category">
                 <h3>Tablets</h3>
                 <button class="btn btn-primary" [routerLink]="['/list-products']">Compre agora</button>
             </div>
         </div>
-  
+
         <div class="category">
             <img src="assets/images/projetor.png" alt="Imagem de um celular">
-  
+
             <div class="infos-category">
                 <h3>TVs</h3>
                 <button class="btn btn-primary" [routerLink]="['/list-products']">Compre agora</button>
@@ -139,15 +139,15 @@
         </div>
     </div>
   </section>
-  
+
   <!--- PRODUCT SPOTLIGHT --->
   <section class="product-spotlight">
     <h1 class="title">Destaques</h1>
-  
+
     <div class="list-spotlight">
         <div class="spotlight">
             <img src="assets/images/relogio.png" alt="Imagem de um relógio">
-  
+
             <div class="infos-spotlight">
                 <h3>
                     <span class="description">Pantony 6P Activity Tracker</span>
@@ -156,10 +156,10 @@
                 <button class="btn btn-primary" [routerLink]="['/product/:id']">Compre agora</button>
             </div>
         </div>
-  
+
         <div class="spotlight">
             <img src="assets/images/caixa-som.png" alt="Imagem de um relógio">
-  
+
             <div class="infos-spotlight">
                 <h3>
                     <span class="description">Studio 8 Portable Bluetooth Speaker</span>
@@ -170,53 +170,53 @@
         </div>
     </div>
   </section>
-  
+
   <!--- SECTION TOP SELLERS --->
   <section class="new-products">
     <h1 class="title">Mais Vendidos</h1>
-  
+
     <div class="list-new-products">
         <div class="wrap-product">
             <div class="product-img">
                 <img src="assets/images/megapixel.png" alt="Imagem de uma caixinha de bluetooth">
             </div>
-  
+
             <div class="product-info">
                 <p [routerLink]="['/product/:id']">Pantony 180 20.0 Megapixel Digital Camera</p>
                 <span>R$ 1.850,00</span>
                 <span class="rating"><i class="ph-fill ph-star"></i> 4.1 (100)</span>
             </div>
         </div>
-  
+
         <div class="wrap-product">
             <div class="product-img">
                 <img src="assets/images/smartphone-z.png" alt="Imagem de uma caixinha de bluetooth">
             </div>
-  
+
             <div class="product-info">
                 <p [routerLink]="['/product/:id']">Smartphone Z Pixel Max 128GB Unlocked</p>
                 <span>R$ 1.850,00</span>
                 <span class="rating"><i class="ph-fill ph-star"></i> 4.1 (100)</span>
             </div>
         </div>
-  
+
         <div class="wrap-product">
             <div class="product-img">
                 <img src="assets/images/airpods.png" alt="Imagem de uma caixinha de bluetooth">
             </div>
-  
+
             <div class="product-info">
                 <p [routerLink]="['/product/:id']">Space Buds True Wireless Earbud Headphones</p>
                 <span>R$ 1.850,00</span>
                 <span class="rating"><i class="ph-fill ph-star"></i> 4.1 (100)</span>
             </div>
         </div>
-  
+
         <div class="wrap-product">
             <div class="product-img">
                 <img src="assets/images/produto3.png" alt="Imagem de uma caixinha de bluetooth">
             </div>
-  
+
             <div class="product-info">
                 <p [routerLink]="['/product/:id']">SDK Portable Bluetooth Speaker</p>
                 <span>R$ 1.850,00</span>
@@ -225,11 +225,11 @@
         </div>
     </div>
   </section>
-  
+
   <!--- SECTION REVIEWS --->
   <div class="grid-reviews">
     <h1 class="title">Avaliações</h1>
-  
+
     <div class="results-review">
         <p>
             <span class="stars-rating">
@@ -242,67 +242,67 @@
             <span class="grade">4.8/5</span>
             <span class="total-feedbacks">de 400+ avaliações</span>
         </p>
-  
+
         <h3>Avaliações de Usuários</h3>
     </div>
-  
+
     <div class="list-feedbacks">
         <div class="feedback">
             <div class="user-review">
                 <i class="ph-fill ph-star"></i>
                 <span>4.5</span>
             </div>
-  
+
             <p class="text-feedback">"Encontrei o laptop perfeito em minutos!"</p>
             <span class="author-feedback">João</span>
         </div>
-  
+
         <div class="feedback">
             <div class="user-review">
                 <i class="ph-fill ph-star"></i>
                 <span>4</span>
             </div>
-  
+
             <p class="text-feedback">"Entrega rápida, ótimo atendimento ao cliente!"</p>
             <span class="author-feedback">Sarah K.</span>
         </div>
-  
+
         <div class="feedback">
             <div class="user-review">
                 <i class="ph-fill ph-star"></i>
                 <span>4.5</span>
             </div>
-  
+
             <p class="text-feedback">"Site lindo, muito fácil de navegar. Definitivamente voltarei!"</p>
             <span class="author-feedback">Daniel P.</span>
         </div>
-  
+
         <div class="feedback">
             <div class="user-review">
                 <i class="ph-fill ph-star"></i>
                 <span>5</span>
             </div>
-  
+
             <p class="text-feedback">"Vendas e descontos frequentes! Economizei um pacote em meus novos fones de ouvido."</p>
             <span class="author-feedback">Anna M.</span>
         </div>
-  
+
         <div class="feedback">
             <div class="user-review">
                 <i class="ph-fill ph-star"></i>
                 <span>4.5</span>
             </div>
-  
+
             <p class="text-feedback">"Seleção de marcas de primeira linha, opções de garantia confiáveis. Perfeito!"</p>
             <span class="author-feedback">Charles W.</span>
         </div>
-  
+
         <div class="feedback">
             <div class="user-review">
                 <i class="ph-fill ph-star"></i>
                 <span>4.9</span>
             </div>
-  
+
             <p class="text-feedback">"Descrições claras, checkout fácil. Ótima experiência de compra on-line."</p>
             <span class="author-feedback">Jessica A.</span>
         </div>

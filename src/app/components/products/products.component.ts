@@ -9,11 +9,12 @@ import { AuctionService } from '../../services/auctions/auctions.service';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
 import { LoaderService } from '../fier-spinner/loader.service';
+import { SpinnerComponent } from '../fier-spinner/spinner.component';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, FormsModule, CommonModule, RouterModule],
+  imports: [HeaderComponent, FooterComponent, FormsModule, CommonModule, RouterModule, SpinnerComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
@@ -94,6 +95,7 @@ export class ProductsComponent implements OnInit {
       auctionMinimumPrice: this.product.minAuctionPrice,
       auctionPrice: this.bidInfos.bidAmount,
       productId: this.product.id,
+      productName: this.product.name,
       supplierDocument: this.product.document,
       auctionOwner: {
         name: this.user.name || "",
@@ -103,6 +105,7 @@ export class ProductsComponent implements OnInit {
       },
       quantityProduct: this.bidInfos.qtdProduct
     }
+    this.loaderService.setLoading(true);
     this.auctionService.createAuction(payload)
       .subscribe(e => {
         if (e) {
@@ -110,8 +113,10 @@ export class ProductsComponent implements OnInit {
         } else {
           this.error = true;
         }
+      this.loaderService.setLoading(false);
       }, err => {
         this.error = true;
+        this.loaderService.setLoading(false);
         alert(`Ocorreu um erro ao registrar lance: ${JSON.stringify(err)}`);
       })
   }

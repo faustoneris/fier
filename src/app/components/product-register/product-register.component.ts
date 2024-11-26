@@ -42,13 +42,15 @@ export class ProductRegisterComponent {
       const token = localStorage.getItem('token')
 
       if(token) {
-        const decodedToken = this.jwtHelper.decodeToken(token)
-        const document = decodedToken.document
+        const decodedToken = this.jwtHelper.decodeToken(token);
+        const document = decodedToken.document;
+        const supplierEmail = decodedToken.email;
 
         const payload = {
           name: formData.productName,
           document: document,
           price: formData.price,
+          supplierEmail: supplierEmail,
           minAuctionPrice: formData.minAuctionPrice,
           image: "~/images/",
           category: formData.productCategory,
