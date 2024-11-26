@@ -7,11 +7,13 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
+import { SpinnerComponent } from '../fier-spinner/spinner.component';
+import { LoaderService } from '../fier-spinner/loader.service';
 
 @Component({
   selector: 'app-update-user',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, ReactiveFormsModule, CommonModule],
+  imports: [HeaderComponent, FooterComponent, ReactiveFormsModule, CommonModule, SpinnerComponent],
   templateUrl: './update-user.component.html',
   styleUrl: './update-user.component.css'
 })
@@ -24,7 +26,8 @@ export class UpdateUserComponent {
     private router: Router,
     private jwtHelper: JwtHelperService,
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private readonly loader: LoaderService
   ) {
     this.userForm = this.fb.group({
       userCPF: ['', Validators.required],
@@ -61,34 +64,28 @@ export class UpdateUserComponent {
   }
 
   onSubmit() {
+    this.loader.setLoading(true);
     const token = localStorage.getItem('token')
+    const form = this.userForm.value
 
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       const decodedToken = this.jwtHelper.decodeToken(token);
+      const payload = {
+        name: form.userName,
+        email: form.userEmail,
+        document: form.userCPF,
+        phoneNumber: form.userPhone,
+        // password: form.userPwd,
+        loginType: this.authService.getRole()
+      }
 
-      const document = decodedToken.document
-
-      const form = this.userForm.value
-
-      this.userService.getUserByDocument(document).subscribe(user => {
-        const userId = user._id
-
-        const payload = {
-          name: form.userName,
-          email: form.userEmail,
-          document: form.userCPF,
-          phoneNumber: form.userPhone,
-          password: form.userPwd,
-          loginType: this.authService.getRole()
-        }
-
-        this.userService.updateUser(userId, payload).subscribe(res => {
-          alert('Informações atualizadas!')
-          console.log('Usuario atualiazado -', res)
-        }, err => {
-          alert('Erro!')
-          console.error('Erro -', err)
-        })
+      this.userService.updateUser(decodedToken.sub, payload).subscribe(res => {
+      this.loader.setLoading(false);
+        alert('Informações atualizadas!')
+      }, err => {
+        this.loader.setLoading(false);
+        alert('Erro!')
+        console.error('Erro -', err)
       })
 
     }

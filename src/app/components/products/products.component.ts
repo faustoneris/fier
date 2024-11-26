@@ -94,6 +94,7 @@ export class ProductsComponent implements OnInit {
       auctionMinimumPrice: this.product.minAuctionPrice,
       auctionPrice: this.bidInfos.bidAmount,
       productId: this.product.id,
+      supplierDocument: this.product.document,
       auctionOwner: {
         name: this.user.name || "",
         email: this.user.email || "",
