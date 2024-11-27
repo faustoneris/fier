@@ -6,7 +6,7 @@
     <div class="td bid-date">{{ bid.date || DateUtc}}</div>
     <div class="td bid-status">{{ bid.status || 'Aguardando resposta'}}</div>
     <div class="td bid-actions">
-        <button class="btn-bid accept-bid" (click)="acceptPropose()" disabled="bid.status == 'Aprovado'  || 'Reprovado'">Aceitar Proposta</button>
-        <button class="btn-bid refuse-bid" (click)="refusePropose()" disabled="bid.status == 'Aprovado'  || 'Reprovado'">Recusar Proposta</button>
+        <button class="btn-bid accept-bid" (click)="acceptPropose()">Aceitar Proposta</button>
+        <button class="btn-bid refuse-bid" (click)="refusePropose()">Recusar Proposta</button>
     </div>
 </div>
